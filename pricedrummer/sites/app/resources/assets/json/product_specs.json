@@ -1,0 +1,22 @@
+[
+	{
+		"section":"Standard",
+		"SpecKey":"Standard Name",
+		"SpecValue":"Samsung GALAXY A7 16GB Single Sim SM-A700"
+	},
+	{
+		"section":"Standard",
+		"SpecKey":"Model Number",
+		"SpecValue":"SM-A700"
+	},
+	{
+		"section":"Features",
+		"SpecKey":"Manufacturer",
+		"SpecValue":"Samsung"
+	},
+	{
+		"section":"Features",
+		"SpecKey":"Display Size",
+		"SpecValue":"5.5"
+	}
+]

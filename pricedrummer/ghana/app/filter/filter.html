@@ -1,0 +1,981 @@
+<div class="container" style="margin-top: 15px;">
+    <div class="row">
+        <div class="no-padding col-md-12 col-sm-12 hidden-xs col-lg-12" style="margin-top: -10px;">
+            <div class="breadcrumb">
+                <!--<div ncy-breadcrumb></div>-->
+                <div class="bread-crumb">
+                    <ul ng-show="Breadcrumb.length>0">
+                        <li class="bc-home" ng-show="Breadcrumb.length>0"><a href="/">PriceDrummer</a></li>
+                        <li ng-repeat="category in Breadcrumb | orderBy: 'level'" class="bc-home" ng-if="category.level==1" ><a href="{{category.url}}"> {{category.name}} </a></li>
+                        <li ng-repeat="category in Breadcrumb | orderBy: 'level'" class="bc-home" ng-if="category.level!=1"  ng-class="{true:'breadcrumb-last', false:'breadcrumb-not-last'}[$last]" >&nbsp; {{category.name}} </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="visible-xs col-xs-12" style="margin-top: -10px;">
+            <div class="breadcrumb">
+                <!--<div ncy-breadcrumb></div>-->
+                <div class="bread-crumb">
+                    <ul ng-show="Breadcrumb.length>0">
+                        <li class="bc-home" ng-show="Breadcrumb.length>0"><a href="/">PriceDrummer</a></li>
+                        <li ng-repeat="category in Breadcrumb | orderBy: 'level'" class="bc-home" ng-if="category.level==1" ><a href="{{category.url}}"> {{category.name}} </a></li>
+                        <li ng-repeat="category in Breadcrumb | orderBy: 'level'" class="bc-home" ng-if="category.level!=1"  ng-class="{true:'breadcrumb-last', false:'breadcrumb-not-last'}[$last]" >&nbsp; {{category.name}} </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end row div -->
+
+    <div class="row">
+        <div id="filterBar" class="col-md-3 hidden-xs col-lg-3 hidden-sm no-padding" style="margin-top: -20px;">
+            <div class="shop-sidebar">
+                <!--TEXT WIDGET -->
+                <div class=" text-widget">
+                    <h3>FILTER</h3>
+                </div>
+                <!--RANE WIDGET-->
+
+                <div style="font-size: 13px;margin: 0px;padding: 0px 0px 8px 0px;border-bottom: #2197C9 3px solid;" ng-if="MatchingCategories.length>1">
+                    <h3 style="margin: 0px 0px 7px 10px;">Other Matching Categories</h3>
+                    <p ng-repeat="category in MatchingCategories" ng-if="category.level>2 && category.has_product==1 && category.category_id !=categoryId" style="margin: 0px;">
+                        <a onclick="closeCanvas();" href="/filter/{{category.category_id}}/Search/{{url_search}}" style="color: #2197C9; margin: 8px 10px;">{{category.name}}</a>
+                    </p>
+                </div>
+                <div style="font-size: 13px;margin: 0px;padding: 10px 0px 8px 0px;border-bottom: #2197C9 3px solid;" ng-if="RelatedCategories.length>1">
+                    <h3 style="margin: 0px 0px 7px 10px;">Other Related Categories</h3>
+                    <p ng-repeat="category in RelatedCategories" ng-if="category.has_product==1 && category.category_id !=categoryId" style="margin: 0px;">
+                        <a onclick="closeCanvas();" href="/filter/{{category.category_id}}/{{category.name|spacelessUrl| lowercase}}" style="color: #2197C9; margin: 8px 10px;">{{category.name}}</a>
+                    </p>
+                </div>
+
+                <div class="rance-wrapper" id="PriceRangeSlider">
+                    <div class="row MyFilterSlider">
+                        <div class="col-md-6 no-padding">
+                            <span class="minPrice pull-left"><strong ng-show="ShowPriceSlidePrice">GH¢{{slider.minValue}}</strong></span>
+                        </div>
+                        <div class="col-md-6 no-padding">
+                            <span class="maxPrice pull-right"><strong ng-show="ShowPriceSlidePrice">GH¢{{slider.maxValue}}</strong></span>
+                        </div>
+                    </div>
+                    <span ng-show="ShowPriceSlidePrice">
+                    <rzslider rz-slider-model="slider.minValue"
+                              rz-slider-high="slider.maxValue"
+                              rz-slider-options="slider.options"></rzslider></span>
+                </div> <!-- end rance wrapper div -->
+
+                <button style="display: none;" ng-click="routto('/filter/39/mobile-phones')">Click Me</button>
+
+                <!--TAG WIDGET-->
+                <div class="coupon-accordion">
+                    <div class="search_display">
+                        <input placeholder="Search..." id="s" ng-model="InputSearchFilter" my-enter="getData(currentPage);">
+                        <button class="button1" type="submit">
+                        </button>
+                    </div>
+                    <!--
+                        From the loop below, Set the input checkbok ot an undersore replaced string of the spec and the spec option
+                        This is done so that each chekbox in a particular section will be unique
+					-->
+                    <div ng-repeat="spec in filter_specs | uniqueArray:'detail_name'| orderBy: 'order_index' | limitTo : 2 : 0 " ng-hide="spec.detail_name == 'Model' && categoryId != 1059">
+                        <h3 class="show filter-heading" onclick="ToggleFilterSpecs($(this).find('.Ftitle').text())"><i
+                                id="head-icon" class="fa fa-minus-circle" aria-hidden="true"></i> {{spec.detail_name}}<span class="Ftitle" style="display: none;">{{spec.detail_name|ReformatID}}</span>
+                        </h3>
+                        <div id="{{spec.detail_name|ReformatID}}" class="coupon-checkout">
+                            <div class="scrollbar"></div>
+                            <div>
+                                <div class="catagory-list">
+                                    <ul>
+                                        <li ng-repeat="specOption in spec.details_value | orderBy" ng-hide="specOption == 'N/A'" repeat-end="onEnd()">
+
+                                            <div class="checkbox checkbox-primary">
+                                                <input id="{{spec.details_actual_value ? spec.detail_code+'-'+spec.details_actual_value[specOption].join('_to_') : spec.detail_code+'-'+specOption|ReformatID}}"
+                                                       onclick="angular.element($(this)).scope().SetFilterString($(this).parent('.checkbox').find('.FtitleOption').text());"
+                                                       class="styled" type="checkbox" />
+                                                <label for="{{spec.details_actual_value ? spec.detail_code+'-'+spec.details_actual_value[specOption].join('_to_') : spec.detail_code+'-'+specOption|ReformatID}}" >
+                                                    {{specOption.indexOf(" & ")>=0 ? specOption : specOption+spec.suggestion}}
+                                                    <!--<span class="count"> ({{specOption.count}})</span>-->
+                                                </label>
+                                                <span class="FtitleOption" style="display: none;">{{spec.details_actual_value ? spec.detail_code+'-'+spec.details_actual_value[specOption].join('_to_') : spec.detail_code+'-'+specOption|ReformatID}}</span>
+                                                <span class="Ftion" style="display: none;">{{spec.details_actual_value ? spec.detail_code+'-'+spec.details_actual_value[specOption].join('_to_') : spec.detail_code+'-'+specOption|ReformatID}}</span>
+
+                                            </div>
+
+                                        </li>
+
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!--CATEGORY WIDGET-->
+                    <div ng-repeat="spec in filter_specs | uniqueArray:'detail_name' | orderBy: 'order_index'| limitTo : filter_specs.length : 2"
+                         ng-hide="spec.detail_name == 'Video Link' || spec.detail_name == 'Model' && categoryId != 1059">
+                        <h3 class="show filter-heading" onclick="ToggleFilterSpecs($(this).find('.Ftitle').text())"><i
+                                id="head-icon" class="fa fa-plus-circle" aria-hidden="true"></i> {{spec.detail_name}}<span class="Ftitle" style="display: none;">{{spec.detail_name|ReformatID}}</span>
+                        </h3>
+                        <div id="{{spec.detail_name|ReformatID}}" class="coupon-checkout-content">
+                            <div class="shop-catagories">
+                                <div class="catagory-list">
+                                    <ul>
+                                        <li ng-repeat="specOption in spec.details_value | orderBy" ng-hide="specOption == 'N/A' || specOption == ''" repeat-end="onEnd()">
+
+                                            <div class="checkbox checkbox-primary" style="{{spec.details_actual_value[specOption].length < 1 ?  'pointer-events: none; color: gainsboro; cursor: not-allowed;':'' }}">
+                                                <input id="{{spec.details_actual_value ? spec.detail_code+'-'+spec.details_actual_value[specOption].join('_to_') : spec.detail_code+'-'+specOption|ReformatID}}"
+                                                       onclick="angular.element($(this)).scope().SetFilterString($(this).parent('.checkbox').find('.FtitleOption').text());"
+                                                       class="styled" type="checkbox" />
+                                                <label for="{{spec.details_actual_value ? spec.detail_code+'-'+spec.details_actual_value[specOption].join('_to_') : spec.detail_code+'-'+specOption|ReformatID}}" >
+                                                    {{specOption.indexOf(" & ")>=0 ? specOption : specOption+spec.suggestion}}
+                                                    <!--<span class="count"> ({{specOption.count}})</span>-->
+                                                </label>
+                                                <span style="display: none;">{{spec.details_actual_value[specOption].length}}</span>
+                                                <span class="FtitleOption" style="display: none;">{{spec.details_actual_value ? spec.detail_code+'-'+spec.details_actual_value[specOption].join('_to_') : spec.detail_code+'-'+specOption|ReformatID}}</span>
+                                                <span class="Ftion" style="display: none;">{{spec.details_actual_value ? spec.detail_code+'-'+spec.details_actual_value[specOption].join('_to_') : spec.detail_code+'-'+specOption|ReformatID}}</span>
+                                            </div>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--FEATURED PRODUCT-->
+
+            </div>
+        </div> <!-- end col-md-3 div -->
+
+        <div class="col-md-7 col-lg-7 no-padding hidden-sm hidden-xs"
+             style="width: 65%; margin-left: -15px; margin-top: -20px;">
+            <div class="spinner" ng-show="loading"><img ng-src='img/loading.gif'
+                                                        style="margin: 10% auto auto 47%;"/></div>
+
+            <ul class="nav nav-tabs nav-pills" style="margin-left: 0px; margin-right: 0px;">
+                <li class="active"><a aria-expanded="true" data-toggle="tab" target="_self" href="#Compare_Prods"
+                                      class="pad_a">Compare Products</a></li>
+
+                <!--<li class=""><a aria-expanded="true" data-toggle="tab" target="_self" href="#top_products"-->
+                <!--class="pad_a">Top Products</a></li>-->
+
+                <li class=""><a aria-expanded="false" data-toggle="tab" target="_self" href="#buyers_guide"
+                                class="pad_a">Buyers Guide</a></li>
+            </ul>
+
+
+            <!-- Tab content goes here-->
+            <div class="tab-content" style="margin: 0px 0px 15px;">
+
+                <div id="Compare_Prods" class="tab-pane fade active in">
+                    <div class="container-fluid">
+
+                    </div>
+
+                </div>
+
+                <div id="top_products" class="tab-pane fade">
+
+                    <div class="container-fluid">
+                        <p class="tab_cont">
+                        <div class="row">
+                            <div class="col-xs-6 col-md-4 col-sm-4"
+                                 ng-repeat="top_product in top_Products | limitTo: 3">
+									<span class="thumbnail">
+										<div class="product-image">
+                                            <div class="show-img">
+                                                <a href="{{top_product.url}}"><img
+                                                        ng-src='{{top_product.image}}' alt="{{top_product.name}}"
+                                                        style="max-width: 70%;"></a>
+                                            </div>
+
+                                        </div>
+										<div class="prod-info">
+                                            <h2 class="pro-name1">
+                                                <a href="{{top_product.url}}">{{top_product.name}}</a>
+                                            </h2>
+
+                                            <div class="flo_at">
+                                                <div class="actions">
+													<span class="add-to-cart">
+														<a href="{{top_product.url}}"
+                                                           id="top_product"><span>GH¢{{top_product.price}}</span></a>
+													</span>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+									</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="buyers_guide" class="tab-pane fade">
+                    <br>
+                    <div class="container-fluid" ng-repeat="guide in buyers_guide">
+                        <p class="tab_cont">
+                            {{guide.guide}}
+                        </p>
+                        <span ng-bind-html="guide.heading | ReformatHTML" class="guide_heading"></span>
+                        <p>
+                            <img ng-if="guide.has_image == 1"
+                                 style="float: left; border: 10px solid beige; padding: 5px; margin: 0 8px; max-height: 120px;"
+                                 ng-src='http://www.pricedrummer.com/images/static/buying_guide_images/thumbs/{{guide.id}}.png?v={{randVersion}}'/>
+                            <span class="guide_content" ng-bind-html="guide.content| ReformatHTML"></span>
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- end tab content div -->
+            <!--Tab content ends here -->
+
+
+            <!-- Shop area begins here -->
+            <div class="shop-area">
+                <div class="shop-short-wrapper clearfix">
+
+                    <div class="shop-sort clearfix">
+                        <ul class="pull-left" style="font-size: 12px; padding: 10px;">
+                            <!--<li style="margin-left: 5px; font-weight: 600;">-->
+                            <!--<a href="#">Filter</a>-->
+                            <!--</li>-->
+                            <li style="margin-left: 5px; font-weight: 600;" ng-if="total_count == 1">{{ total_count }}
+                                product
+                            </li>
+                            <li style="margin-left: 5px; font-weight: 600;" ng-if="total_count > 1">{{ total_count }}
+                                products
+                            </li>
+                        </ul>
+                        <ul class="grid-list-button clearfix">
+                            <li class="hidden-xs"><a data-toggle="tab" target="_self" href="#list"><i
+                                    class="fa fa-th-list"></i> List View</a>
+                            </li>
+                            <li class="active hidden-xs"><a data-toggle="tab" target="_self" href="#grid"><i
+                                    class="fa fa-th"></i>
+                                Grid View</a>
+                            </li>
+                            <li class="hidden-xs">
+                                <select ng-model="orderProduct" class="select_dropdown">
+                                    <option value="">Sort by</option>
+                                    <option value="name">A-Z</option>
+                                    <option value="min_price">Price</option>
+                                </select>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div> <!-- end shop-short-wrapper div -->
+
+                <div class="tab-content">
+                    <div id="grid" class="row tab-pane fade in active">
+                        <div class="col-md-12 col-lg-12 hidden-xs" style="margin-left: -15px;">
+
+                            <div ng-show="countForNoProducs==0" ng-cloak>
+                                <div style="text-align: center;"><br/>
+                                    <h1>No Products</h1></div>
+                            </div>
+
+                            <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6"
+                                 dir-paginate="product in compare_products | uniqueArray:'name'| orderBy: orderProduct | itemsPerPage:NumOfProducts"
+                                 total-items="total_count" current-page="currentPage" ng-show="product.price > 0">
+                                <div class="single-product">
+                                    <div class="product-image">
+                                        <div class="show-img">
+                                            <a id="img-param" ng-if="product.merchant_id.split(',').length == 1" href=""
+                                               onclick="submitForm();">
+                                                <img ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                        alt="{{product.name}} image"></a>
+                                            <a ng-if="product.merchant_id.split(',').length != 1" href="{{product.url}}">
+                                                <img ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                        alt="{{product.name}} image"></a>
+                                        </div> <!-- end show-img div -->
+                                    </div> <!-- end product-image div -->
+                                    <div class="prod-info">
+                                        <h2 ng-if="product.merchant_id.split(',').length == 1 || product.retailer_product_id.split(',').length == 1" class="pro-name"><a href="{{product.compare_url}}">{{product.name}}</a>
+                                        </h2>
+                                        <h2 ng-if="product.merchant_id.split(',').length > 1" class="pro-name"><a href="{{product.url}}">{{product.name}}</a>
+                                        </h2>
+                                        <div class="price-box">
+                                            <div class="price"><span>{{product.min_price | currency: 'GH¢'}}</span></div>
+                                        </div>
+                                        <div class="actions">
+												<span class="add-to-cart">
+													<!--If there is only one merchant/retailer then goto store else compare page-->
+													<div ng-if="product.prices_count == 1 && product.isMerchantProduct == 1"
+                                                         href="{{product.url}}"
+                                                         target="blank">
+                                                        <form action="redirect/redirect.php" method="POST"
+                                                              target="_blank" id="imageParameters">
+                                                            <input type="hidden" name="merchant_url"
+                                                                   value="{{product.url}}"/>
+                                                            <input type="hidden" name="merchant_logo"
+                                                                   value="{{product.merchant_logo}}"/>
+                                                            <input type="hidden" name="merchant_id"
+                                                                   value="{{product.merchant_id}}"/>
+                                                            <input type="hidden" name="category_id"
+                                                                   value="{{currentCategory}}"/>
+                                                            <input type="hidden" name="CurrentUserIP"
+                                                                   value="{{CurrentUserIP}}"/>
+                                                            <input type="hidden" name="CurrentUserCountry"
+                                                                   value="{{CurrentUserCountry}}"/>
+                                                            <button type="submit" class="store">Go to Store</button>
+                                                        </form>
+                                                    </div>
+                                                    <a ng-if="product.prices_count == 1 && product.isRetailerProduct == 1"
+                                                       data-href="{{product.url}}" onclick="window.location = this.getAttribute('data-href');">
+                                                        <span>Contact Seller</span>
+                                                    </a>
+                                                    <a ng-if="product.prices_count > 1 && product.isBothMerchantAndRetailer == 1
+                                                            || product.prices_count > 1 && product.isMerchantProduct == 1
+                                                            || product.prices_count > 1 && product.isRetailerProduct == 1"
+                                                       href="{{product.url}}">
+                                                        <span>Compare Prices</span>
+                                                    </a>
+
+
+												</span>
+                                            <div ng-if="product.prices_count == 1 && product.isMerchantProduct == 1
+                                                        ||product.prices_count == 1 && product.isRetailerProduct == 1" class="ret_ail">
+                                                <span>{{product.prices_count}} Price</span>
+                                                <span style="display: none;">{{product.prices_count}}</span>
+                                            </div>
+                                            <div ng-if="product.prices_count > 1 && product.isBothMerchantAndRetailer == 1
+                                                        || product.prices_count > 1 && product.isMerchantProduct == 1
+                                                        || product.prices_count > 1 && product.isRetailerProduct == 1" class="ret_ail">
+                                                <a href="{{product.url}}">{{product.prices_count}} Prices</a>
+                                                <span style="display: none;">{{product.prices_count}}</span>
+                                            </div>
+
+                                            <!--<div ng-if="product.merchant_id.split(',').length == 1" class="ret_ail">-->
+                                                <!--<span>{{product.merchant_id.split(',').length}} Price</span>-->
+                                                <!--<span style="display: none;">{{product.merchant_id.split(",").length}}</span>-->
+                                            <!--</div>-->
+                                            <!--<div ng-if="product.merchant_id.split(',').length>1 || product.retailer_product_id.split(',').length > 1" class="ret_ail">-->
+
+                                                <!--<a href="{{product.url}}">{{product.merchant_id.split(',').length + product.retailer_product_id.split(',').length}} Prices</a>-->
+                                                <!--<span style="display: none;">{{product.merchant_id.split(",").length + product.retailer_product_id.split(',').length}}</span>-->
+                                            <!--</div>-->
+                                        </div>
+                                        <div class="rating">
+                                            <i ng-repeat="i in getArray(product.rating) track by $index"
+                                               class="fa fa-star"></i>
+                                            <i ng-repeat="i in getArray(5-product.rating) track by $index"
+                                               class="fa fa-star-o"></i>
+                                            <!--<i class="fa fa-star-half-o"></i>-->
+                                        </div>
+                                    </div> <!-- end prod-info div -->
+                                </div> <!-- end single-product div -->
+                            </div> <!-- end col-sm-4 col-md-3 col-lg-3 col-xs-6 div -->
+                        </div> <!-- end col-md-12 col-lg-12 col-xs-12 div -->
+
+                    </div> <!-- end grid div -->
+
+                    <div id="list" class="tab-pane fade in">
+                        <div dir-paginate="product in compare_products | uniqueArray:'name'| itemsPerPage:NumOfProducts"
+                             total-items="total_count" current-page="currentPage" class="product-list"
+                             ng-show="product.price>0">
+                            <div class="row">
+                                <div class="col-md-12 ">
+                                    <div class="col-md-12 ">
+
+                                        <div class="single-list-product"
+                                             style="height: 100px; border-bottom: 1px solid rgb(218, 216, 216);">
+                                            <div class="col-sm-2 col-md-2 col-lg-2">
+                                                <div class="show-img">
+                                                    <a ng-if="product.merchant_id.split(',').length == 1" href="" onclick="submitForm();">
+                                                        <img
+                                                                ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                                alt="{{product.name}} image" title="{{product.name}}">
+                                                    </a>
+                                                    <a ng-if="product.merchant_id.split(',').length > 1" href="{{product.url}}">
+                                                        <img
+                                                                ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                                alt="{{product.name}} image" title="{{product.name}}">
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-sm-7 col-md-7 col-lg-7">
+                                                <div class="prod-list-detail">
+                                                    <div class="prod-info1">
+                                                        <h3 ng-if="product.merchant_id.split(',').length == 1" class="pro_name">
+                                                            <a href="" onclick="submitForm();">{{product.name}}</a>
+                                                        </h3>
+                                                        <h3 ng-if="product.merchant_id.split(',').length > 1" class="pro_name">
+                                                            <a href="{{product.url}}">{{product.name | ReformatHTML}}</a>
+                                                        </h3>
+                                                        <!--<p class="prod-des">sample textsample textsample textsample textsample textsample text <a href=""> more info </a></p> -->
+                                                        <div class="rating">
+                                                            <i ng-repeat="i in getArray(product.rating) track by $index"
+                                                               class="fa fa-star"></i>
+                                                            <i ng-repeat="i in getArray(5-product.rating) track by $index"
+                                                               class="fa fa-star-o"></i>
+                                                            <!--<i class="fa fa-star-half-o"></i>-->
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 col-md-3 col-lg-3"
+                                                 style="border-left: 1px solid rgb(218, 216, 216);">
+
+                                                <div class="actions">
+                                                    <div class="actions_aling">
+                                                        <span class="pri_range">{{product.min_price | currency: 'GH¢'}}</span>
+                                                        <br>
+                                                        <span class="add-to-cart">
+																<div ng-if="product.merchant_id.split(',').length == 1 "
+                                                                     href="{{product.url}}"
+                                                                     target="blank">
+                                                                    <form action="redirect/redirect.php" method="POST"
+                                                                          target="_blank">
+                                                                        <input type="hidden" name="merchant_url"
+                                                                               value="{{product.url}}"/>
+                                                                        <input type="hidden" name="merchant_logo"
+                                                                               value="{{product.merchant_logo}}"/>
+                                                                        <input type="hidden" name="merchant_id"
+                                                                               value="{{product.merchant_id}}"/>
+                                                            <input type="hidden" name="category_id"
+                                                                   value="{{currentCategory}}"/>
+                                                            <input type="hidden" name="CurrentUserIP"
+                                                                   value="{{CurrentUserIP}}"/>
+                                                            <input type="hidden" name="CurrentUserCountry"
+                                                                   value="{{CurrentUserCountry}}"/>
+                                                                        <button type="submit" class="store">Go to Store</button>
+                                                                    </form>
+                                                                </div>
+																<a ng-if="product.merchant_id.split(',').length != 1 "
+                                                                   href="{{product.url}}">
+                                                                    <span>Compare Prices</span>
+                                                                </a>
+															</span>
+
+                                                        <a ng-if="product.merchant_id.split(',').length == 1"><p>{{product.merchant_id.split(',').length}}
+                                                            Price</p></a>
+                                                        <a ng-if="product.merchant_id.split(',').length > 1" href="{{product.url}}"><p>
+                                                            {{product.merchant_id.split(',').length}} Prices</p></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> <!-- end list div -->
+
+                    <div class="col-md-12 col-lg-12">
+                        <div ng-show="!loading" class="pull-right" style="margin-right: -20px;">
+                            <dir-pagination-controls
+                                    max-size="8"
+                                    direction-links="true"
+                                    boundary-links="true"
+                                    on-page-change="collectUrlParams(newPageNumber)">
+                            </dir-pagination-controls>
+                        </div>
+                    </div>
+
+                </div> <!-- end tab content div -->
+
+            </div> <!-- end shop area div -->
+            <!--Shop area ends here -->
+
+
+        </div> <!-- end col-md-7 div -->
+
+        <!-- Tablet View -->
+        <div class="hidden-lg hidden-md col-sm-12 hidden-xs no-padding" style="">
+            <div class="spinner" ng-show="loading"><img ng-src='img/loading.gif'
+                                                        style="margin: 10% auto auto 47%;"/></div>
+
+            <ul class="nav nav-tabs nav-pills" style="margin-left: 0px; margin-right: 0px;">
+                <li class="active"><a aria-expanded="true" data-toggle="tab" target="_self" href="#smCompare_products"
+                                      class="pad_a">Compare Products</a></li>
+
+                <!--<li class=""><a aria-expanded="true" data-toggle="tab" target="_self" href="#top_products"-->
+                <!--class="pad_a">Top Products</a></li>-->
+
+                <li class=""><a aria-expanded="false" data-toggle="tab" target="_self" href="#smBuyer_guide"
+                                class="pad_a">Buyers Guide</a></li>
+            </ul>
+
+
+            <!-- Tab content goes here-->
+            <div class="tab-content" style="margin: 0px 0px 15px;">
+                <div id="smCompare_products" class="tab-pane fade in active">
+                    <!-- Shop area begins here -->
+                    <div class="shop-area">
+                        <div class="shop-short-wrapper">
+
+                            <div class="shop-sort clearfix" style="padding: 10px 0;">
+                                <div class="col-sm-2">
+                                    <a href="javascript:void(0);" onclick="getFilterBarTablet()" class="mf-button">
+                                        <span style="font-size: 13px;"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> Filter</span>
+                                    </a>
+                                </div>
+                                <div class="col-sm-6">
+                                    <ul style="font-size: 12px;">
+                                        <li style="margin-left: 5px; font-weight: 600; text-align: center;" ng-if="total_count == 1">{{ total_count }}
+                                            product
+                                        </li>
+                                        <li style="margin-left: 5px; font-weight: 600; text-align: center;" ng-if="total_count > 1">{{ total_count }}
+                                            products
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-sm-2 pull-right">
+                                    <a style="font-size: 13px;" data-toggle="tab" target="_self" href="#mob_list"><i
+                                            class="fa fa-th-list"></i> List View</a>
+                                </div>
+                                <div class="col-sm-2 pull-right">
+                                    <a style="font-size: 13px;" data-toggle="tab" target="_self" href="#mob_grid"><i class="fa fa-th"></i>
+                                        Grid View</a>
+                                </div>
+                            </div>
+                        </div> <!-- end shop-short-wrapper div -->
+
+                        <div class="tab-content">
+                            <div id="mob_grid" class="row tab-pane fade in">
+                                <div class="col-md-12 col-lg-12 col-xs-12" style="margin-left: -15px;">
+
+                                    <div ng-show="countForNoProducs==0" ng-cloak>
+                                        <div style="text-align: center;"><br/>
+                                            <h1>No Products</h1></div>
+                                    </div>
+
+                                    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6"
+                                         dir-paginate="product in compare_products | uniqueArray:'name'| itemsPerPage:NumOfProducts"
+                                         total-items="total_count" current-page="currentPage">
+                                        <div class="single-product">
+                                            <div class="product-image">
+                                                <div class="show-img">
+                                                    <a ng-if="product.merchant_id.split(',').length == 1" href="" onclick="submitForm();"
+                                                       ng-click="imgParams(product.url, product.merchant_logo)">
+                                                        <img
+                                                                ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                                alt="{{product.name}} image"></a>
+                                                    <a ng-if="product.merchant_id.split(',').length != 1" href="{{product.url}}">
+                                                        <img
+                                                                ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                                alt="{{product.name}} image"></a>
+                                                </div> <!-- end show-img div -->
+                                            </div> <!-- end product-image div -->
+                                            <div class="prod-info">
+                                                <h2 ng-if="product.merchant_id.split(',').length == 1" class="pro-name"><a href="{{product.compare_url}}">{{product.name}}</a>
+                                                </h2>
+                                                <h2 ng-if="product.merchant_id.split(',').length > 1" class="pro-name"><a href="{{product.url}}">{{product.name | ReformatHTML}}</a>
+                                                </h2>
+                                                <div class="price-box">
+                                                    <div class="price"><span>{{product.min_price | currency:'GH¢'}}</span></div>
+                                                </div>
+                                                <div class="actions">
+												<span class="add-to-cart">
+													<!--If there is only one merchant/retailer then goto store else compare page-->
+													<div ng-if="product.merchant_id.split(',').length == 1 "
+                                                         href="{{product.url}}"
+                                                         target="blank">
+                                                        <form action="redirect/redirect.php" method="POST"
+                                                              target="_blank" id="imageParameters">
+                                                            <input type="hidden" name="merchant_url"
+                                                                   value="{{product.url}}"/>
+                                                            <input type="hidden" name="merchant_logo"
+                                                                   value="{{product.merchant_logo}}"/>
+                                                            <input type="hidden" name="merchant_id"
+                                                                   value="{{product.merchant_id}}"/>
+                                                            <input type="hidden" name="category_id"
+                                                                   value="{{currentCategory}}"/>
+                                                            <input type="hidden" name="CurrentUserIP"
+                                                                   value="{{CurrentUserIP}}"/>
+                                                            <input type="hidden" name="CurrentUserCountry"
+                                                                   value="{{CurrentUserCountry}}"/>
+                                                            <button type="submit" class="store">Go to Store</button>
+                                                        </form>
+                                                    </div>
+													<a ng-if="product.merchant_id.split(',').length != 1 "
+                                                       href="{{product.url}}">
+                                                        <span>Compare Prices</span>
+                                                    </a>
+
+
+												</span>
+                                                    <div ng-if="product.merchant_id.split(',').length == 1" class="ret_ail">
+                                                        <span>{{product.merchant_id.split(',').length}} Price</span>
+                                                    </div>
+                                                    <div ng-if="product.merchant_id.split(',').length > 1" class="ret_ail">
+                                                        <a href="{{product.url}}">{{product.merchant_id.split(',').length}} Prices</a>
+                                                    </div>
+                                                </div>
+                                                <div class="rating">
+                                                    <i ng-repeat="i in getArray(product.rating) track by $index"
+                                                       class="fa fa-star"></i>
+                                                    <i ng-repeat="i in getArray(5-product.rating) track by $index"
+                                                       class="fa fa-star-o"></i>
+                                                    <!--<i class="fa fa-star-half-o"></i>-->
+                                                </div>
+                                            </div> <!-- end prod-info div -->
+                                        </div> <!-- end single-product div -->
+                                    </div> <!-- end col-sm-4 col-md-3 col-lg-3 col-xs-6 div -->
+                                </div> <!-- end col-md-12 col-lg-12 col-xs-12 div -->
+
+                            </div> <!-- end grid div -->
+
+                            <div id="mob_list" class="tab-pane fade in active">
+                                <div dir-paginate="product in compare_products | uniqueArray:'name'| itemsPerPage:NumOfProducts"
+                                     total-items="total_count" current-page="currentPage" class="product-list">
+                                    <div class="row">
+                                        <div class="col-md-12 col-xs-12">
+                                            <div class="col-md-12 col-xs-12">
+
+                                                <div class="single-list-product"
+                                                     style="height: 100px; border-bottom: 1px solid rgb(218, 216, 216);">
+                                                    <div class="col-sm-3 col-md-3 col-lg-3 col-xs-2">
+                                                        <div class="show-img">
+                                                            <a ng-if="product.merchant_id.split(',').length == 1" href="" onclick="submitForm();">
+                                                                <img
+                                                                        ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                                        alt="{{product.name}} image" title="{{product.name}}">
+                                                            </a>
+                                                            <a ng-if="product.merchant_id.split(',').length > 1" href="{{product.url}}">
+                                                                <img
+                                                                        ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                                        alt="{{product.name}} image" title="{{product.name}}">
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-5 col-lg-5 col-xs-8">
+                                                        <div class="prod-list-detail">
+                                                            <div class="prod-info1">
+                                                                <h3 ng-if="product.merchant_id.split(',').length == 1" class="pro_name">
+                                                                    <a href="" onclick="submitForm();">{{product.name}}</a>
+                                                                </h3>
+                                                                <h3 ng-if="product.merchant_id.split(',').length > 1" class="pro_name">
+                                                                    <a href="{{product.url}}">{{product.name}}</a>
+                                                                </h3>
+                                                                <!--<p class="prod-des">sample textsample textsample textsample textsample textsample text <a href=""> more info </a></p> -->
+                                                                <div class="rating">
+                                                                    <i ng-repeat="i in getArray(product.rating) track by $index"
+                                                                       class="fa fa-star"></i>
+                                                                    <i ng-repeat="i in getArray(5-product.rating) track by $index"
+                                                                       class="fa fa-star-o"></i>
+                                                                    <!--<i class="fa fa-star-half-o"></i>-->
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-3 col-md-4 col-lg-4 hidden-xs"
+                                                         style="border-left: 1px solid rgb(218, 216, 216);">
+
+                                                        <div class="actions">
+                                                            <div class="actions_aling">
+                                                                <span class="pri_range">{{product.min_price | currency: 'GH¢'}}</span>
+                                                                <br>
+                                                                <span class="add-to-cart">
+																<div ng-if="product.merchant_id.split(',').length == 1 "
+                                                                     href="{{product.url}}"
+                                                                     target="blank">
+                                                                    <form action="redirect/redirect.php" method="POST"
+                                                                          target="_blank">
+                                                                        <input type="hidden" name="merchant_url"
+                                                                               value="{{product.url}}"/>
+                                                                        <input type="hidden" name="merchant_logo"
+                                                                               value="{{product.merchant_logo}}"/>
+                                                                        <button type="submit" class="store">Go to Store</button>
+                                                                    </form>
+                                                                </div>
+																<a ng-if="product.merchant_id.split(',').length != 1 "
+                                                                   href="{{product.url}}">
+                                                                    <span>Compare Prices</span>
+                                                                </a>
+															</span>
+
+                                                                <a ng-if="product.merchant_id.split(',').length == 1"><p>{{product.merchant_id.split(',').length}}
+                                                                    Price</p></a>
+                                                                <a ng-if="product.merchant_id.split(',').length > 1" href="{{product.url}}"><p>
+                                                                    {{product.merchant_id.split(',').length}} Prices</p></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> <!-- end list div -->
+
+                            <div id="sm-offcanvas" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+                                <a onclick="getFilterBarTablet();closeCanvasTablet();" href="javascript:void(0);" class="sm-close"><span aria-hidden="true">&times;</span></a>
+                                <div class="spinner" ng-show="loading"><img ng-src='img/loading.gif'
+                                                                            style="margin: 10% auto auto 47%;"/></div>
+                                <div id="copiedFilterBarTablet"></div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12">
+                                <div ng-show="!loading" class="pull-right" style="margin-right: -20px;">
+                                    <dir-pagination-controls
+                                            max-size="6"
+                                            direction-links="true"
+                                            boundary-links="true"
+                                            on-page-change="getData(newPageNumber)">
+                                    </dir-pagination-controls>
+                                </div>
+                            </div>
+
+                        </div> <!-- end tab content div -->
+
+                    </div> <!-- end shop area div -->
+                    <!--Shop area ends here -->
+
+                    <!--<div class="container-fluid">-->
+                    <!--<p class="tab_cont">-->
+                    <!--<div class="row">-->
+                    <!--<div class="col-xs-6 col-md-4" ng-repeat="top_product in top_Products | limitTo: 3">-->
+                    <!--<span class="thumbnail">-->
+                    <!--<div class="product-image">-->
+                    <!--<div class="show-img">-->
+                    <!--<a href="{{top_product.url}}"><img-->
+                    <!--ng-src="{{top_product.image}}" alt=""-->
+                    <!--style="max-width: 70%;"></a>-->
+                    <!--</div>-->
+
+                    <!--</div>-->
+                    <!--<div class="prod-info">-->
+                    <!--<h2 class="pro-name1">-->
+                    <!--<a href="{{top_product.url}}">{{top_product.name}}</a>-->
+                    <!--</h2>-->
+
+                    <!--<div class="flo_at">-->
+                    <!--<div class="actions">-->
+                    <!--<span class="add-to-cart">-->
+                    <!--<a href="{{top_product.url}}"-->
+                    <!--id="top_product"><span>GH¢{{top_product.price}}</span></a>-->
+                    <!--</span>-->
+
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                    <!--</span>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                </div>
+
+                <div id="smBuyer_guide" class="tab-pane fade">
+                    <br>
+                    <div class="container-fluid" ng-repeat="guide in buyers_guide">
+                        <p class="tab_cont">
+                            {{guide.guide}}
+                        </p>
+                        <span ng-bind-html="guide.heading" class="guide_heading"></span>
+                        <p>
+                            <img ng-if="guide.has_image == 1 "
+                                 style="width: 124px; float: left; border: 10px solid beige; padding: 5px; margin: 10px;"
+                                 ng-src='http://www.pricedrummer.com/images/static/buying_guide_images/thumbs/{{guide.id}}.png?v={{randVersion}}'/>
+                            <span class="guide_content" ng-bind-html="guide.content | ReformatHTML"></span>
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- end tab content div -->
+            <!--Tab content ends here -->
+
+        </div> <!-- end col-md-7 div -->
+        <!-- End Tablet View -->
+
+        <!-- Mobile View -->
+        <div class="col-xs-12 no-padding hidden-sm hidden-lg hidden-md">
+            <div class="spinner" ng-show="loading"><img ng-src='img/loading.gif'
+                                                        style="margin: 10% auto auto 47%;"/></div>
+            <div class="filter-wrapper">
+                <div class="filter-header clearfix">
+                    <div class="col-xs-4">
+                        <!--<a onclick="getFilterBar();" href="javascript:void(0);" class="mf-button" data-toggle="offcanvas"-->
+                        <!--data-target="#mf-offcanvas"-->
+                        <!--data-canvas="body">-->
+                        <!--<span><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> Filter</span>-->
+                        <!--</a>-->
+                        <a href="javascript:void(0);" onclick="getFilterBar();angular.element($(this)).scope().$apply();" class="mf-button">
+                            <span style="font-size: 13px;"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> Filter</span>
+                        </a>
+                        <!--
+                        <a onclick="getFilterBar();openCanvas();" href="javascript:void(0);" class="mf-button">
+                            <span><i class="fa fa-sort-amount-desc" aria-hidden="true"></i> Filter</span>
+                        </a>
+                        -->
+                    </div>
+                    <div class="col-xs-5">
+                        <span class="mf-tt" ng-if="total_count == 1">{{total_count}} product</span>
+                        <span class="mf-tt" ng-if="total_count > 1">{{total_count}} products</span>
+                    </div>
+                    <div class="col-xs-1 pull-right">
+                        <a data-toggle="tab" target="_self" class="mf-btn" href="#mfList"><i
+                                class="fa fa-bars" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-xs-1 pull-right">
+                        <a data-toggle="tab" target="_self" class="mf-btn" href="#mfGrid"><i
+                                class="fa fa-th-large" aria-hidden="true"></i></a>
+                    </div>
+
+                </div>
+                <div class="tab-content filter-content clearfix">
+                    <div ng-show="countForNoProducs == 0" ng-cloak>
+                        <div style="text-align: center;"><br/>
+                            <h1>No Products</h1></div>
+                    </div>
+
+                    <div role="tabpanel" id="mfList" class="tab-pane active fade in">
+                        <div class="mf-cthumb clearfix"
+                             dir-paginate="product in compare_products | uniqueArray:'name'| itemsPerPage:NumOfProducts"
+                             total-items="total_count" current-page="currentPage"
+                             ng-show="product.price > 0">
+                            <a href="{{product.url}}">
+                                <div class="col-xs-2 no-padding">
+                                    <a href="{{product.url}}">
+                                        <img
+                                                ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                alt="{{product.name}} image"></a>
+                                </div>
+                                <div class="col-xs-9">
+                                    <a ng-if="product.merchant_id.split(',').length == 1" href="" onclick="submitForm();"><h3
+                                            class="mf-prod-title">{{product.name}}</h3></a>
+                                    <a ng-if="product.merchant_id.split(',').length > 1" href="{{product.url}}"><h3 class="mf-prod-title">
+                                        {{product.name | ReformatHTML}}</h3></a>
+                                    <span class="mf-price">{{product.min_price | currency: 'GH¢'}}</span>
+                                    <span ng-if="product.merchant_id.split(',').length == 1" class="mf-retailers">
+                                        {{product.merchant_id.split(',').length}} Price</span>
+                                    <span ng-if="product.merchant_id.split(',').length > 1" class="mf-retailers">
+                                        {{product.merchant_id.split(',').length}} Prices</span>
+                                    <div class="mf-rating">
+                                        <i ng-repeat="i in getArray(product.rating) track by $index"
+                                           class="fa fa-star"></i>
+                                        <i ng-repeat="i in getArray(5-product.rating) track by $index"
+                                           class="fa fa-star-o"></i>
+                                        <!--<i class="fa fa-star-half-o"></i>-->
+                                    </div>
+                                </div>
+                            </a> <!-- end col-xs-8 div -->
+                            <div class="col-xs-1 no-padding">
+                                <div class="mf-nav-icon pull-right">
+                                    <i class="fa fa-angle-right fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" id="mfGrid" class="clearfix tab-pane fade">
+                        <div class="col-xs-6 no-padding" style="border: thin solid #EEEEEE; height: 280px;"
+                             dir-paginate="product in compare_products | uniqueArray:'name'| itemsPerPage:NumOfProducts"
+                             total-items="total_count" current-page="currentPage" ng-show="product.price > 0">
+                            <div class="">
+                                <div class="product-image">
+                                    <div class="show-img">
+                                        <a id="img-param" ng-if="product.merchant_id.split(',').length == 1" href=""
+                                           onclick="submitForm();">
+                                            <img
+                                                    ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                    alt="{{product.name}} image"></a>
+                                        <a ng-if="product.merchant_id.split(',').length != 1" href="{{product.url}}">
+                                            <img
+                                                    ng-src='http://www.pricedrummer.com/images/static/product_images/thumbs/{{product.image}}.png?v={{randVersion}}'
+                                                    alt="{{product.name}} image"></a>
+                                    </div> <!-- end show-img div -->
+                                </div> <!-- end product-image div -->
+                                <div class="prod-info">
+                                    <h2 ng-if="product.merchant_id.split(',').length == 1" class="pro-name"><a href="{{product.compare_url}}">{{product.name}}</a>
+                                    </h2>
+                                    <h2 ng-if="product.merchant_id.split(',').length > 1" class="pro-name"><a href="{{product.url}}">{{product.name}}</a>
+                                    </h2>
+                                    <div class="price-box">
+                                        <div class="price"><span>{{product.min_price | currency: 'GH¢'}}</span></div>
+                                    </div>
+                                    <div class="actions">
+												<span class="add-to-cart">
+													<!--If there is only one merchant/retailer then goto store else compare page-->
+													<div ng-if="product.merchant_id.split(',').length == 1 "
+                                                         href="{{product.url}}"
+                                                         target="blank">
+                                                        <form action="redirect/redirect.php" method="POST"
+                                                              target="_blank" id="imageParameters">
+                                                            <input type="hidden" name="merchant_url"
+                                                                   value="{{product.url}}"/>
+                                                            <input type="hidden" name="merchant_logo"
+                                                                   value="{{product.merchant_logo}}"/>
+                                                            <button type="submit" class="store">Go to Store</button>
+                                                        </form>
+                                                    </div>
+													<a ng-if="product.merchant_id.split(',').length != 1 "
+                                                       href="{{product.url}}">
+                                                        <span>Compare Prices</span>
+                                                    </a>
+
+
+												</span>
+                                        <div ng-if="product.merchant_id.split(',').length == 1" class="ret_ail">
+                                            <span>{{product.merchant_id.split(',').length}} Price</span>
+                                        </div>
+                                        <div ng-if="product.merchant_id.split(',').length > 1" class="ret_ail">
+                                            <a href="{{product.url}}">{{product.merchant_id.split(',').length}} Prices</a>
+                                        </div>
+                                    </div>
+                                    <div class="sm-rating">
+                                        <i ng-repeat="i in getArray(product.rating) track by $index"
+                                           class="fa fa-star"></i>
+                                        <i ng-repeat="i in getArray(5-product.rating) track by $index"
+                                           class="fa fa-star-o"></i>
+                                        <!--<i class="fa fa-star-half-o"></i>-->
+                                    </div>
+                                </div> <!-- end prod-info div -->
+                            </div> <!-- end single-product div -->
+                        </div> <!-- end col-xs-6 div -->
+                    </div>
+                </div>
+                <!--
+                <div id="mf-offcanvas" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+                    <a onclick="setFilterBar();closeCanvas();" href="javascript:void(0);" class="sm-close"><span aria-hidden="true">&times;</span></a>
+                    <div class="spinner" ng-show="loading"><img ng-src="img/loading.gif"
+                                                                style="margin: 10% auto auto 47%;"/></div>
+                    <div id="copiedFilterBar"></div>
+                </div>
+                -->
+                <div id="mf-offcanvas" class="navmenu navmenu-default navmenu-fixed-left offcanvas" role="navigation">
+                    <a onclick=";closeCanvas();" href="javascript:void(0);" class="sm-close"><span aria-hidden="true">&times;</span></a>
+                    <div class="spinner" ng-show="loading"><img ng-src='img/loading.gif'
+                                                                style="margin: 10% auto auto 47%;"/></div>
+                    <div id="copiedFilterBar"></div>
+                </div>
+
+
+                <div class="col-xs-12">
+                    <div ng-show="!loading">
+                        <dir-pagination-controls
+                                max-size="1"
+                                direction-links="true"
+                                boundary-links="true"
+                                on-page-change="getData(newPageNumber)">
+                        </dir-pagination-controls>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Mobile View -->
+
+        <div class="col-md-2 col-xs-12 col-lg-2 col-sm-2">
+            <!--<div class="handle_abs">-->
+            <!--<div class="category_area" style="height: 300px; padding: 5px;">-->
+            <!--<p></p>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div> <!-- end col-md-2 div -->
+    </div>
+</div>

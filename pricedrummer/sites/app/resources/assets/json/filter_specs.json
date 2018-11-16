@@ -1,0 +1,155 @@
+[
+		{
+			"id":"2",
+			"cat_id":"4",
+			"name" : "Brand",
+			"options" : [
+					{
+						"value" : "Samsung",
+						"count" : "200"
+					},
+					{
+						"value" : "Lenovo",
+						"count" : "18"
+					},
+					{
+						"value" : "Nokia",
+						"count" : "77"
+					},
+					{
+						"value" : "Akai",
+						"count" : "34"
+					},
+					{
+						"value" : "Nasko",
+						"count" : "12"
+					},
+					{
+						"value" : "LG",
+						"count" : "7"
+					}
+			]
+		},
+		{
+			"id":"3",
+			"cat_id":"4",
+			"name" : "Operating System",
+			"options" : [
+					{
+						"value" : "Android",
+						"count" : "200"
+					},
+					{
+						"value" : "bb",
+						"count" : "200"
+					}
+			]
+		},
+		{
+			"id":"4",
+			"cat_id":"4",
+			"name" : "Screen size",
+			"options" : [
+					{
+						"value" : "4-inch",
+						"count" : "55"
+					},
+					{
+						"value" : "10-inch",
+						"count" : "55"
+					}
+			]
+		},
+		{
+			"id":"5",
+			"cat_id":"4",
+			"name" : "Internal Memory",
+			"options" : [
+					{
+						"value" : "128 GB",
+						"count" : "55"
+					},
+					{
+						"value" : "8 GB",
+						"count" : "88"
+					},
+					{
+						"value" : "16 GB",
+						"count" : "55"
+					},
+					{
+						"value" : "64 GB",
+						"count" : "6"
+					}
+			]
+		},
+		{
+			"id":"1",
+			"cat_id":"5",
+			"name" : "Manufacturer",
+			"options" : [
+					{
+						"value" : "Samsung",
+						"count" : "200"
+					},
+					{
+						"value" : "Lenovo",
+						"count" : "18"
+					},
+					{
+						"value" : "Nokia",
+						"count" : "77"
+					},
+					{
+						"value" : "Akai",
+						"count" : "34"
+					},
+					{
+						"value" : "Nasko",
+						"count" : "12"
+					},
+					{
+						"value" : "LG",
+						"count" : "7"
+					}
+			]
+		},
+		{
+			"id":"4",
+			"cat_id":"5",
+			"name" : "Screen size",
+			"options" : [
+					{
+						"value" : "4-inch",
+						"count" : "55"
+					},
+					{
+						"value" : "10-inch",
+						"count" : "55"
+					}
+			]
+		},
+		{
+			"id":"5",
+			"cat_id":"5",
+			"name" : "Internal Memory",
+			"options" : [
+					{
+						"value" : "128 GB",
+						"count" : "55"
+					},
+					{
+						"value" : "8 GB",
+						"count" : "88"
+					},
+					{
+						"value" : "16 GB",
+						"count" : "55"
+					},
+					{
+						"value" : "64 GB",
+						"count" : "6"
+					}
+			]
+		}
+]

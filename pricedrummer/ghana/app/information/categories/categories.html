@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 rm-pad">
+            <div class="handle_category">
+                <div ng-include src="'navigation/sidepanel.html'"></div>
+            </div> <!-- end handle category div -->
+        </div> <!-- end col-*-2 div -->
+
+        <div class="col-md-8 col-lg-8" style="margin-top: 10px;">
+            <div class="tab-content">
+                <div id="contact" class="tab-pane active fade in">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h1 style="font-size: 1.5em; margin-top: 5px; margin-bottom: 0px;">Categories A-Zs</h1>
+                        </div> <!-- end panel heading div -->
+                        <div class="panel-body" style="min-height: 575px;">
+                            <p>Alphabetical list of categories:</p>
+                            <div class="col md-12 col-sm-12 col-xs-12 no-padding">
+                                <ul class="filter" ng-show="all_level3n4">
+                                    <li ng-click="activateLetter('')" ng-class="{'active':activeLetter == ''}">ALL</li>
+                                    <li ng-repeat="letter in alphabets track by $index " ng-click="activateLetter(letter)" ng-class="{'active':letter==activeLetter}">{{letter}}</li>
+                                </ul>
+                            </div>
+                            <div class="spinner" ng-show="loading"><img src="img/loading.gif"
+                                                                        style="margin: 10% auto auto 47%;"/></div>
+                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-padding">
+                                <div ng-show="all_level3n4" class="col-md-4 col-lg-4 col-sm-6 no-padding filter-list" ng-repeat="category in all_level3n4 | orderBy: 'name' | startsWithLetter : activeLetter">
+                                    <a href="/filter/{{category.category_id}}/{{category.name | spacelessUrl | lowercase}}">{{category.name}}</a>
+                                </div>
+                            </div>
+                        </div> <!-- end panel body div -->
+                    </div> <!-- end panel div -->
+                </div> <!-- end contact div -->
+            </div> <!-- end tab content div -->
+        </div> <!-- end col-*-8 div -->
+
+    </div> <!-- end row div -->
+</div> <!-- end container div -->

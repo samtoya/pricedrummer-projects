@@ -1,0 +1,51 @@
+<section class="container">
+    <section class="row">
+        <div class="col-xs-12 col-sm-6 col-lg-12 col-md-12" id="no-search">
+            <h4>0 results for search "<span style="color: #FF5500;">{{url_search}}</span>".</h4>
+        </div>
+
+        <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6 col-md-offset-3 col-lg-offset-3" id="search-tips">
+            <h4>Search Tips</h4>
+            <ul>
+                <li>Check your spelling for typing errors</li>
+                <li>Try using general search terms (i.e "LG TV" instead of "LG 42LF551V 42 Inches")</li>
+                <li>Use a different keyword or a more common term (i.e "Mobile phones", "Cars", "Laptops", "TVs")
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <div>
+        <div class="panel-widget-wrapper clearfix" style="margin-bottom: 15px;">
+            <div class="panel-widget">
+                <div class="panel-widget-heading">
+                    <h2 class="panel-title">Please Checkout These Popular Categories...</h2>
+                </div>
+                <div class="panel-widget-body">
+                    <div class="col-md-12 no-padding">
+                        <div ng-repeat="product in home_compare"
+                             class="col-md-3 col-lg-4 col-xs-6 col-sm-6 panel-widget-thumbs">
+                            <h5>{{product.name}}</h5>
+                            <div class="col-md-4 col-xs-3 col-lg-3 col-sm-3 no-padding">
+                                <img alt="{{product.name}} image"
+                                     ng-src="img/60x60/{{product.image}}?v={{randVersion}}"
+                                     title="{{product.name}}">
+                            </div>
+
+
+                            <div class="col-md-8 col-xs-9 col-lg-9 col-sm-9">
+                                <ul class="panel-widget-categories">
+                                    <li ng-repeat="sub_product in product.sub_categories"><a
+                                            href="{{sub_product.url}}">{{sub_product.shortname}}</a>{{$last ? ''
+                                        : ', '}}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

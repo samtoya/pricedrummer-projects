@@ -1,0 +1,120 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "c283e684f2746d26c238c747e7333fcd",
+    "content-hash": "6830479da3ff44d858fe9b133864bf24",
+    "packages": [
+        {
+            "name": "phpmailer/phpmailer",
+            "version": "v5.2.16",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a",
+                "reference": "1d85f9ef3ecfc42bbc4f3c70d5e37ca9a65f629a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "*",
+                "phpunit/phpunit": "4.7.*"
+            },
+            "suggest": {
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "class.phpmailer.php",
+                    "class.phpmaileroauth.php",
+                    "class.phpmaileroauthgoogle.php",
+                    "class.smtp.php",
+                    "class.pop3.php",
+                    "extras/EasyPeasyICS.php",
+                    "extras/ntlm_sasl_client.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2016-06-06 09:09:37"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "4.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "d02e07b2cc4e35234119033c6d0cc8805a893b11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/d02e07b2cc4e35234119033c6d0cc8805a893b11",
+                "reference": "d02e07b2cc4e35234119033c6d0cc8805a893b11",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Chris Corbyn"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "mail",
+                "mailer"
+            ],
+            "time": "2012-04-26 16:57:24"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

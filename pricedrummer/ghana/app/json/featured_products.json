@@ -1,0 +1,52 @@
+[
+		{
+			"id":"4",
+			"name" : "Samsung Galaxy S5 Mini",
+			"Description" : "sample textsample textsample textsample textsample textsample text",
+			"minprice" : "$66.99",
+			"maxprice" : "$866.99",
+			"retailers" : "20",
+			"rating" : "2 Stars",
+			"image" : "img/Samsung-UE55JU6500.jpg"
+		},
+		{
+			"id":"4",
+			"name" : "Samsung Galaxy S5 Mini",
+			"Description" : "sample textsample textsample textsample textsample textsample text",
+			"minprice" : "$66.99",
+			"maxprice" : "$866.99",
+			"retailers" : "20",
+			"rating" : "2 Stars",
+			"image" : "img/Samsung-UE55JU6500.jpg"
+		},
+		{
+			"id":"4",
+			"name" : "Samsung Galaxy S5 Mini",
+			"Description" : "sample textsample textsample textsample textsample textsample text",
+			"minprice" : "$66.99",
+			"maxprice" : "$866.99",
+			"retailers" : "20",
+			"rating" : "2 Stars",
+			"image" : "img/Samsung-UE55JU6500.jpg"
+		},
+		{
+			"id":"4",
+			"name" : "Samsung Galaxy S5 Mini",
+			"Description" : "sample textsample textsample textsample textsample textsample text",
+			"minprice" : "$66.99",
+			"maxprice" : "$866.99",
+			"retailers" : "20",
+			"rating" : "2 Stars",
+			"image" : "img/Samsung-UE55JU6500.jpg"
+		},
+		{
+			"id":"4",
+			"name" : "Samsung Galaxy S5 Mini",
+			"Description" : "sample textsample textsample textsample textsample textsample text",
+			"minprice" : "$66.99",
+			"maxprice" : "$866.99",
+			"retailers" : "20",
+			"rating" : "2 Stars",
+			"image" : "img/Samsung-UE55JU6500.jpg"
+		}
+]

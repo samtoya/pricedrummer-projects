@@ -1,0 +1,29 @@
+[
+	{
+		"id":"1",
+		"name":"Electroland",
+		"image":"site_logo/electroland.jpg",
+		"rating":"5",
+		"product_name":"Samsung Galaxy S7 SM-G930F 32GB",
+		"product_url":"http://google.com",
+		"product_price":"900"
+	},
+	{
+		"id":"2",
+		"name":"Jumia",
+		"image":"site_logo/logo.jpg",
+		"rating":"6",
+		"product_name":"Samsung Galaxy S7 32GB",
+		"product_url":"http://google.com",
+		"product_price":"866.99"
+	},
+	{
+		"id":"3",
+		"name":"Jumia",
+		"image":"site_logo/jumia.jpg",
+		"rating":"6",
+		"product_name":"Samsung Galaxy S7 32GB",
+		"product_url":"http://google.com",
+		"product_price":"866.99"
+	}
+]

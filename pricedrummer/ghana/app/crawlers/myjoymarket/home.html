@@ -1,0 +1,609 @@
+<!--top container area-->
+<div class="handle_home_section" class="ng-cloak">
+    <section class="container">
+        <div class="row">
+            <div class="col-md-3 hidden-sm hidden-xs nopadding">
+                <div class="home-category-nav">
+                    <div class="category_area">
+                        <div class="cat_header">
+                            <p class="cat-heading">Compare Prices</p>
+                        </div> <!-- end cat header div -->
+
+                        <div class="category_list">
+                            <div ng-repeat="category in mega_categories1 | orderBy: '-category_children' | limitTo:6"
+                                 ng-show="category.name != 'Real Estate' && category.name != 'Autos & Accessories'">
+                                <div class="cat_header">
+                                    <ul>
+                                        <li>
+                                            <h3>
+                                                <a href="/category/{{category.category_id}}/{{category.name|spacelessUrl| lowercase}}"><img
+                                                        src="img/category_icons/{{category.name|ReformatID}}.png"
+                                                        alt="">{{category.name}}</a>
+                                            </h3>
+                                            <ul>
+                                                <li ng-repeat="level3 in category.category_children"><a
+                                                        class="nav-action"
+                                                        href="/filter/{{level3.category_id}}/{{level3.name|spacelessUrl| lowercase}}">{{level3.name}}</a>,
+                                                </li>
+                                                <li><a class="nav-action"
+                                                       href="/category/{{category.category_id}}/{{category.name|spacelessUrl| lowercase}}">View
+                                                    More</a>
+                                                </li>
+
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div> <!-- end cat_header div -->
+                            </div> <!-- end ng-repeat div -->
+
+                            <div class="see-all_category">
+                                <a href="/category">see all <i class="fa fa-angle-right" aria-hidden="true"></i><i
+                                        class="fa fa-angle-right" aria-hidden="true"></i></a>
+                            </div> <!-- end see-all_category div -->
+                        </div>
+                    </div> <!-- end category-area div -->
+                </div> <!-- end col-md-3 div -->
+            </div> <!-- end left sidebar div -->
+
+
+            <div class="col-lg-7 col-md-8 hidden-xs" style="margin-left: 0;">
+                <div class="handle_slider" style="margin-bottom: 15px;">
+                    <div id="home_slides_control">
+                        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                            <div uib-slide ng-repeat="slide in slides " index="$index">
+                                <img ng-src="{{slide.image}}" style="margin:auto;">
+                            </div> <!-- end uib-slide div -->
+                        </div> <!-- end uib-carousel div -->
+                    </div> <!-- end home_slides_control --></div>
+
+                <div class="panel-widget-wrapper clearfix" style="margin-bottom: 15px;">
+                    <div class="panel-widget">
+                        <div class="panel-widget-heading">
+                            <h2 class="panel-title">Compare before you buy</h2>
+                        </div>
+                        <div class="panel-widget-body">
+                            <div class="col-md-12 no-padding">
+                                <div class="col-md-4 col-lg-4 no-padding panel-widget-thumbs">
+                                    <h5>Mobile Phones</h5>
+                                    <div class="col-md-4 no-padding">
+                                        <img alt="" src="https://placehold.it/60x60">
+                                    </div>
+
+
+                                    <div class="col-md-8 no-padding">
+                                        <ul class="panel-widget-categories">
+                                            <li>Category</li>,
+                                            <li>Category</li>,
+                                            <li>Category</li>,
+                                            <li>Category</li>,
+                                            <li>Category</li>,
+                                            <li>Category</li>,
+                                            <li>Category</li>,
+                                            <li>Category</li>,
+                                            <li>Category</li>,
+                                            <li>Category</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 no-padding panel-widget-thumbs">
+                                    <h5>Content goes here</h5>
+                                    <div class="col-md-4 no-padding">
+                                        <img alt="" src="https://placehold.it/60x60">
+                                    </div>
+
+
+                                    <div class="col-md-8 no-padding">
+                                        <p>Content goes here</p>
+                                        <p>Content goes here</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 no-padding panel-widget-thumbs">
+                                    <h5>Content goes here</h5>
+                                    <div class="col-md-4 no-padding">
+                                        <img alt="" src="https://placehold.it/60x60">
+                                    </div>
+
+
+                                    <div class="col-md-8 no-padding">
+                                        <p>Content goes here</p>
+                                        <p>Content goes here</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-lg-4 no-padding panel-widget-thumbs">
+                                    <h5>Content goes here</h5>
+                                    <div class="col-md-4 no-padding">
+                                        <img alt="" src="https://placehold.it/60x60">
+                                    </div>
+
+
+                                    <div class="col-md-8 no-padding">
+                                        <p>Content goes here</p>
+                                        <p>Content goes here</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-lg-4 no-padding panel-widget-thumbs">
+                                    <h5>Content goes here</h5>
+                                    <div class="col-md-4 no-padding">
+                                        <img alt="" src="https://placehold.it/60x60">
+                                    </div>
+
+
+                                    <div class="col-md-8 no-padding">
+                                        <p>Content goes here</p>
+                                        <p>Content goes here</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 no-padding panel-widget-thumbs">
+                                    <h5>Content goes here</h5>
+                                    <div class="col-md-4 no-padding">
+                                        <img alt="" src="https://placehold.it/60x60">
+                                    </div>
+
+
+                                    <div class="col-md-8 no-padding">
+                                        <p>Content goes here</p>
+                                        <p>Content goes here</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12 no-padding" style="padding-right: 0;">
+                    <div class="blog-social-area">
+                        <div class="panel panel-default" style="margin-left: 0;">
+                            <div class="panel-body" style="padding:0;">
+                                <div class="blog_area">
+                                    <a href="#">
+                                        <h3>
+                                            <button class="btn btn-warning btn-lg">Electronics
+                                            </button>
+                                        </h3>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-sm-6 hidden-xs" style="padding-right: 0px;">
+                    <div class="social-media-area">
+                        <div class="panel panel-default">
+                            <div class="panel-body" style="padding:0;">
+
+                                <div class="fb-page fb_iframe_widget" data-href="#https://www.facebook.com/HelpchangeGhana-687795684618419/" data-tabs="false" data-width="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" fb-xfbml-state="rendered" fb-iframe-plugin-query="adapt_container_width=true&amp;app_id=&amp;container_width=309&amp;hide_cover=false&amp;href=%23https%3A%2F%2Fwww.facebook.com%2FHelpchangeGhana-687795684618419%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=false"><span style="vertical-align: bottom; width: 309px; height: 18px;"><iframe name="fd82e94ff5f9b" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" style="border: medium none; visibility: visible; width: 309px; height: 18px;" src="https://www.facebook.com/v2.6/plugins/page.php?adapt_container_width=true&amp;app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FfTmIQU3LxvB.js%3Fversion%3D42%23cb%3Df30ab6514835112%26domain%3Dlocalhost%26origin%3Dhttp%253A%252F%252Flocalhost%252Ff163eb4df00a3e8%26relation%3Dparent.parent&amp;container_width=309&amp;hide_cover=false&amp;href=%23https%3A%2F%2Fwww.facebook.com%2FHelpchangeGhana-687795684618419%2F&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=true&amp;small_header=false&amp;tabs=false" class="" width="1000px" height="1000px" frameborder="0"></iframe></span></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<section class="category-area-two control-car mar-bottom">-->
+                <!--<div class="handle_slider">-->
+                <!--<div class="row">-->
+                <!--<div class="col-md-12">-->
+                <!--<ul class="nav nav-tabs" style="margin-left: 0;">-->
+                <!--<li class="active shape_li col-md-4 col-sm-4 col-xs-12"><a aria-expanded="true"-->
+                <!--data-toggle="tab"-->
+                <!--target="_self"-->
+                <!--href="#menu1">Popular-->
+                <!--Products</a></li>-->
+                <!--<li class="middle-li col-md-4 col-sm-4 hidden-xs"><a aria-expanded="false"-->
+                <!--data-toggle="tab"-->
+                <!--target="_self" href="#menu2">Featured-->
+                <!--Products</a></li>-->
+                <!--<li class="shape_li col-md-4 col-sm-4 hidden-xs"><a aria-expanded="false"-->
+                <!--data-toggle="tab" target="_self"-->
+                <!--href="#menu3">New Products</a>-->
+                <!--</li>-->
+                <!--</ul>-->
+                <!--<div class="tab-content" style="margin-left: 0;">-->
+
+                <!--<div id="menu1" class="tab-pane fade active in">-->
+
+
+                <!--&lt;!&ndash;start tab container 1&ndash;&gt;-->
+                <!--<div class="container-fluid">-->
+
+                <!--<div class="row">-->
+                <!--<div class="tab_cont">-->
+                <!--<ul class="products">-->
+                <!--<div ng-repeat="product in popular_products"-->
+                <!--class="col-md-6 col-sm-4">-->
+                <!--<li class="drg-sidebar">-->
+                <!--<div class="showon_hover">-->
+                <!--<div class="image">-->
+                <!--<a href="/compare/{{product.product_id}}"><img-->
+                <!--ng-src="/static/product_images/medium/{{product.product_id|ReformatID}}.png"-->
+                <!--class="img-responsive homeproductImageHeight"-->
+                <!--alt=""></a>-->
+                <!--</div>-->
+                <!--<div class="data">-->
+                <!--<h4>-->
+                <!--<a href="/compare/{{product.product_id}}"-->
+                <!--title="{{product.product_name}}"-->
+                <!--class="js-popup js-popup-attached"-->
+                <!--ng-bind-html="product.product_name"></a>-->
+                <!--</h4>-->
+                <!--<h5>{{product.category}}</h5>-->
+                <!--<div>-->
+                <!--<div class="grade">-->
+                <!--<span href="#" title="29 reviews">-->
+                <!--<div class="star-rating">-->
+                <!--<div class="star-rating__wrap">-->
+                <!--<div class="rating">-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star-o"></i>-->
+                <!--<i class="fa fa-star-o"></i>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</span>-->
+                <!--</div>-->
+                <!--<div class="price-disp"><span class="price">{{product.price}}</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--</div>-->
+
+                <!--</ul>-->
+                <!--&lt;!&ndash;see more button&ndash;&gt;-->
+                <!--<div class="see_more"><span><a href="/popular">see more <i-->
+                <!--class="fa fa-angle-right" aria-hidden="true"></i><i-->
+                <!--class="fa fa-angle-right" aria-hidden="true"></i></a></span>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;end see more button&ndash;&gt;-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--</div>-->
+
+                <!--<div id="menu2" class="tab-pane fade">-->
+                <!--<div class="container-fluid">-->
+                <!--<div class="row">-->
+                <!--<div class="tab_cont">-->
+
+                <!--<div ng-repeat="fproducts in featured_products"-->
+                <!--class="single-featured-products">-->
+                <!--<div class="col-sm-2 col-md-3 col-xs-2">-->
+                <!--<div class="show-img">-->
+                <!--<a href="/compare/{{fproducts.product_id}}"><img-->
+                <!--ng-src="/static/product_images/medium//{{fproducts.product_id}}.png"-->
+                <!--alt="{{fproducts.product_name}}"-->
+                <!--style="height: 100px;"></a>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--<div class="col-sm-6 col-md-6 col-xs-6" style="padding: 0;">-->
+                <!--<div class="prod-list-detail">-->
+                <!--<div class="prod-info-featured">-->
+                <!--<h3 class="pro_name">-->
+                <!--<a href="/compare/{{fproducts.product_id}}"-->
+                <!--ng-bind-html="fproducts.product_name"></a>-->
+                <!--</h3>-->
+                <!--<div class="hide-text-xs">-->
+                <!--<p class="prod-des">{{fproducts.Description}}<a-->
+                <!--href="#"> more info </a></p>-->
+                <!--</div>-->
+                <!--<div class="rating">-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star-half-o"></i>-->
+                <!--<i class="fa fa-star-half-o"></i>-->
+                <!--</div>-->
+
+
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-sm-3 col-md-3 col-xs-4">-->
+
+                <!--<div class="actions">-->
+                <!--<div class="actions-aling-featured-products">-->
+                <!--<span class="pri_range">{{fproducts.minprice}} - {{fproducts.maxprice}}</span>-->
+
+                <!--<span class="add-to-cart">-->
+                <!--<a href="/compare/{{fproducts.product_id}}"-->
+                <!--class="compare">-->
+                <!--<span class=" hidden-xs ">Compare Prices</span>-->
+                <!--<span class=" hidden-lg  visible-xs">Compare...</span>-->
+                <!--</a>-->
+                <!--</span>-->
+
+                <!--<a href="/compare/{{fproducts.product_id}}"><p>-->
+                <!--{{fproducts.retailers}} retailers</p></a>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--&lt;!&ndash;see more button&ndash;&gt;-->
+                <!--<div class="see_more"><span><a href="#/featured">see more   <i-->
+                <!--class="fa fa-angle-right" aria-hidden="true"></i><i-->
+                <!--class="fa fa-angle-right" aria-hidden="true"></i></a></span>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;end see more button&ndash;&gt;-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--<div id="menu3" class="tab-pane fade">-->
+                <!--<br>-->
+                <!--<div class="container-fluid">-->
+                <!--<div class="tab_cont">-->
+                <!--<ul class="products">-->
+
+                <!--<div ng-repeat="nproduct in new_products" class="col-md-6 col-sm-4">-->
+                <!--<li class="drg-sidebar">-->
+                <!--<div class="showon_hover">-->
+                <!--<div class="image">-->
+                <!--<a href="/compare/{{nproduct.id}}"><img-->
+                <!--ng-src="static/product_images/medium/{{nproduct.product_id}}.png"-->
+                <!--class="img-responsive homeproductImageHeight"-->
+                <!--alt=""></a>-->
+                <!--</div>-->
+                <!--<div class="data">-->
+                <!--<h4>-->
+                <!--<a href="/compare/{{nproduct.product_id}}"-->
+                <!--class="js-popup js-popup-attached"-->
+                <!--ng-bind-html="nproduct.product_name"></a>-->
+                <!--</h4>-->
+                <!--<h5>{{nproduct.category_name}}</h5>-->
+                <!--<div>-->
+                <!--<div class="grade">-->
+                <!--<span href="/compare/{{nproduct.id}}"-->
+                <!--title="29 reviews">-->
+                <!--<div class="star-rating">-->
+                <!--<div class="star-rating__wrap">-->
+                <!--<div class="rating">-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star"></i>-->
+                <!--<i class="fa fa-star-o"></i>-->
+                <!--<i class="fa fa-star-o"></i>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</span>-->
+                <!--</div>-->
+                <!--<div class="price-disp"><span class="price">{{nproduct.price}}</span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</li>-->
+                <!--</div>-->
+
+                <!--</ul>-->
+                <!--&lt;!&ndash;see more button&ndash;&gt;-->
+                <!--<div class="see_more">-->
+                <!--<span>-->
+                <!--<a href="/nproducts">see more <i class="fa fa-angle-right"-->
+                <!--aria-hidden="true"></i><i-->
+                <!--class="fa fa-angle-right" aria-hidden="true"></i></a>-->
+                <!--</span>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;end see more button&ndash;&gt;-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+
+                <!--</div>-->
+                <!--&lt;!&ndash;end product tab&ndash;&gt;-->
+
+
+                <!--&lt;!&ndash;section for blog and social media&ndash;&gt;-->
+                <!--<div class="row">-->
+                <!--&lt;!&ndash;start blog section&ndash;&gt;-->
+                <!--<div class="col-md-6 col-sm-6 col-xs-12" style="padding-right: 0;">-->
+                <!--<div class="blog-social-area">-->
+                <!--<div class="panel panel-default" style="margin-left: 0;">-->
+                <!--<div class="panel-body" style="padding:0;">-->
+                <!--<div class="blog_area">-->
+                <!--<a href="/category/1/electronics-&-computers">-->
+                <!--<h3>-->
+                <!--<button class="btn btn-warning btn-lg">Electronics-->
+                <!--</button>-->
+                <!--</h3>-->
+                <!--</a>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;start blog section&ndash;&gt;-->
+
+                <!--&lt;!&ndash;start social media section&ndash;&gt;-->
+                <!--<div class="col-md-6 col-sm-6 hidden-xs" style="/*padding-right: 0px;*/">-->
+                <!--<div class="social-media-area">-->
+                <!--<div class="panel panel-default">-->
+                <!--<div class="panel-body" style="padding:0;">-->
+
+                <!--<div class="fb-page"-->
+                <!--data-href="https://www.facebook.com/HelpchangeGhana-687795684618419/"-->
+                <!--data-tabs="false" data-width="" data-small-header="false"-->
+                <!--data-adapt-container-width="true" data-hide-cover="false"-->
+                <!--data-show-facepile="true">-->
+                <!--<blockquote-->
+                <!--cite="https://www.facebook.com/HelpchangeGhana-687795684618419/"-->
+                <!--class="fb-xfbml-parse-ignore">-->
+                <!--<a href="https://www.facebook.com/HelpchangeGhana-687795684618419/">Help</a>-->
+                <!--</blockquote>-->
+                <!--</div>-->
+
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;end social media section&ndash;&gt;-->
+                <!--</div>-->
+                <!--&lt;!&ndash;end section for blog and social media&ndash;&gt;-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</section> &lt;!&ndash; end section container &ndash;&gt;-->
+
+            </div> <!-- end main content area div -->
+
+            <div class="col-md-2 nopadding">
+                <!-- Advertisement -->
+                <!--<div class="category_area" style="margin-left: 0; ">-->
+                    <!--<p>Content of advert goes here.</p>-->
+                <!--</div>-->
+            </div> <!-- end right sidebar div -->
+        </div> <!-- end first row div -->
+
+        <div class="ad-banner"><img src="https://placehold.it/728x90"></div>
+
+        <!-- Top categories section -->
+        <div class="handle_home_category_section">
+            <div class="row">
+                <div class="col-md-12 hidden-xs no-padding">
+                    <div class="top-category-area">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Top Categories</h3>
+                            </div>
+                            <div class="panel-body" style="padding: 0 13px;">
+                                <div class="row">
+                                    <div ng-repeat="topCategory in top_categories" class="col-md-3 col-sm-3 col-xs-6"
+                                         style="padding: 2px; overflow:hidden;">
+                                        <div onmouseover="showSubCat(this);" onmouseleave="hideSubCat(this)"
+                                             class="cat_paddin top_Cats"
+                                             style='background-image: url("img/{{topCategory.image}}");'>
+                                            <a href="">
+                                                <h3>{{topCategory.name}}</h3>
+                                            </a>
+                                            <div style="" class="CategorySub hide_sub-cat">
+                                                <h3>{{topCategory.name}}</h3>
+                                                <ul class="topcats">
+                                                    <li ng-repeat="sub_topCategory in topCategory.children"><a
+                                                            href="/filter/{{sub_topCategory.id}}/{{sub_topCategory.name|spacelessUrl| lowercase}}"
+                                                            class="top_categories_catzero_link">{{sub_topCategory.name}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div> <!-- end panel div -->
+                        </div>
+                    </div>
+                </div> <!-- end col-md-10 div -->
+
+                <div class="hidden-lg hidden-sm hidden-md col-xs-12"> <!-- only visible on small screen -->
+                    <div class="popular category_area">
+                        <div>
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#categories" aria-controls="home"
+                                                                          role="tab"
+                                                                          data-toggle="tab">Categories</a></li>
+                                <li role="presentation"><a href="#popular" aria-controls="profile" role="tab"
+                                                           data-toggle="tab">Popular</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="categories">
+                                    <div class="panel-body">
+                                        <ul ng-repeat-start="category in mega_categories">
+                                            <li><img style="margin-right: 10px;"
+                                                     src="img/category_icons/{{category.name|ReformatID}}.png" alt=""><a
+                                                    href="/filter/{{category.category_id}}">{{category.name}}</a><span
+                                                    style="display: inline-block; margin-top: 10px;"
+                                                    class="fa fa-angle-double-right pull-right"
+                                                    aria-hidden="true"></span></li>
+                                        </ul>
+                                        <hr ng-repeat-end>
+                                    </div>
+                                </div> <!-- end panel div -->
+
+                                <div role="tabpanel" class="tab-pane" id="popular">
+                                    <div class="row">
+                                        <div ng-repeat="featured in popular_products | limitTo: 6">
+                                            <div class="col-sm-3 col-xs-3">
+                                                <a href="/compare/{{featured.id}}"><img
+                                                        ng-src="{{featured.image}}"
+                                                        class="img-responsive" alt=""></a>
+                                            </div>
+                                            <div class="col-sm-9 col-xs-9">
+                                                <h5>{{featured.name}}</h5></li>
+                                                <span>{{featured.price}}</span>
+                                            </div>
+                                            <hr>
+                                        </div>
+
+
+                                    </div> <!-- end row div -->
+                                </div> <!-- end panel div -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div> <!-- end category_area div -->
+
+                <!-- Space for google ads -->
+                <div class="col-md-2 col-lg-2 col-xs-12">
+                    <!--<div class="handle_abs">-->
+                        <!--<div class="category_area" style="padding: 5px;">-->
+                            <!--<p>Content of advert goes here.</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                </div> <!-- end col-md-2 div -->
+
+
+                <div class="hidden-md hidden-sm hidden-lg col-xs-12"> <!-- only visible on small screen -->
+                    <div class="mobile category_area">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Featured</h3>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div ng-repeat="featured in popular_products | limitTo: 6">
+                                        <div class="col-md-6 col-sm-6 col-xs-6">
+                                            <a href="/compare/{{featured.id}}"><img
+                                                    ng-src="{{featured.image}}"
+                                                    class="img-responsive homeproductImageHeight" alt=""></a>
+                                            <ul>
+                                                <li><h5>{{ featured.name }}</h5></li>
+                                                <li><span style="font-weight: bold; color: #FF5500;;">{{ featured.price }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> <!-- end row div -->
+                            </div> <!-- end panel footer div -->
+                            <div class="panel-footer">
+                                <a href="#" class="pull-right">View all</a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div> <!-- end category area div -->
+                </div> <!-- end category_area div -->
+
+                <div class="hidden-md hidden-lg hidden-sm col-xs-12"> <!-- only visible on small screen -->
+                    <div class="mobile category_area">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">New Products</h3>
+                     

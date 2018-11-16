@@ -1,0 +1,159 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+
+    <div class="header-middle">
+        <nav class="align_li" style="width:auto;margin-right: -15px;margin-left: -15px;">
+            <section class="container">
+                <ul id="menu" style="_margin-left: 80px;">
+                    <!-- Menu icons -->
+                    <li class="open_mega hidden-xs">
+                        <div id="nav-icon4" style="width:37px; height:45px">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </li>
+
+                    <!-- Category Flyout Menu -->
+                    <li class="list_some_cates hidden-xs">
+                        <div class='cat_aling'>
+                            <a>
+                                <div class="mega-dropdown">Category <i class="fa fa-angle-down"></i></div>
+                            </a>
+                        </div>
+                        <div id="nav-flyout-wishlist" class="nav-coreFlyout nav-flyout">
+                            <div class="nav-arrow">
+                                <div class="nav-arrow-inner">
+                                </div>
+                            </div>
+                            <div class="nav-template nav-flyout-content nav-tpl-itemList">
+                                <a ng-repeat="level2 in categories_level2"
+                                   href="#/catsub/{{level2.category_id}}/{{level2.name}}"
+                                   class="nav-link nav-item">
+                                    <span class="nav-text">{{level2.name}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Menu search field -->
+                    <li class="categorys-product-search hidden-xs hidden-sm hidden-md">
+                        <div class="handle-header-form">
+                            <form action="#" method="get" class="search-form-cat">
+                                <div class="search-product form-group">
+
+                                    <input type="text" class="form-control search-form "
+                                           placeholder="Enter your search key."/>
+                                    <button class="search-button" value="Search" name="s" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </li>
+
+                    <!-- Login Button -->
+                    <li class="login_link_btn"><a href="#/login">Login</a></li>
+                </ul>
+            </section>
+
+            <!--start mega menu-->
+
+
+            <!--start icons part-->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div id="mega" style="display:none;" class=" hidden-xs">
+                        <div class="mega-icon-margin">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="mega-menu-icons"
+                                         style="text-align: center;margin-bottom: 20px;color: #eee;">
+                                        <i class="fa fa-mobile fa-3x"></i>
+                                        <h4 style="color: #fff;"><i>Forum</i></h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="mega-menu-icons">
+                                        <i class="fa fa-info-circle fa-3x"></i>
+                                        <h4><i>About PriceDrummer</i></h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="mega-menu-icons">
+                                        <i class="fa fa-balance-scale fa-3x" aria-hidden="true"></i>
+                                        <h4><i>Compare Products</i></h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3">
+                                    <div class="mega-menu-icons">
+                                        <i class="fa fa-shopping-cart fa-3x" aria-hidden="true"></i>
+                                        <h4><i>Stores</i></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div id="mega_category" ng-Controller="IndexCtrl">
+                                <div ng-repeat="category in mega_categories | orderBy:'-category_children'">
+                                    <div class="col-md-2 col-sm-3">
+                                        <div class="al_navContent cat-top">
+                                            <h3>{{category.name}}</h3>
+                                            <div class="nav-template nav-flyout-content nav-tpl-megamenu">
+                                                <a ng-repeat="level3 in category.category_children"
+                                                   ng-click="closeMegaMenu()"
+                                                   href="#/filter/{{level3.category_id}}/{{level3.name}}"
+                                                   class="nav-link nav-item">
+                                                    <i class="fa fa-folder-open"></i><span class="nav-text">{{level3.name}}</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                            </div>
+                            <div class="col-lg-6">
+                                <section id="container">
+                                    <!-- Style 2 -->
+                                    <div id="menu-wrap">
+
+                                        <div class="menu-item">
+                                            <span class="active" class="icon fa fa-facebook"></span>
+                                            <a class="hover" class="text" href="#"><i
+                                                    class="fa fa-facebook"></i></a>
+                                        </div><!-- Menu Item -->
+
+                                        <div class="menu-item">
+                                            <span class="active" class="icon fa fa-twitter"></span>
+                                            <a class="hover" class="text" href="#"><i
+                                                    class="fa fa-twitter"></i></a>
+                                        </div><!-- Menu Item -->
+
+                                        <div class="menu-item">
+                                            <span class="active" class="icon fa fa-linkedin"></span>
+                                            <a class="hover" class="text" href="#"><i
+                                                    class="fa fa-linkedin"></i></a>
+                                        </div><!-- Menu Item -->
+
+                                        <div class="menu-item">
+                                            <span class="active" class="icon fa fa-google-plus"></span>
+                                            <a class="hover" class="text" href="#"><i
+                                                    class="fa fa-google-plus"></i></a>
+                                        </div>
+                                    </div><!-- Menu Wrap -->
+                                </section>
+                            </div>
+                        </div>
+                        <!--end icons part-->
+                    </div>
+                </div>
+            </div>
+            <!--end mega menu-->
+        </nav>
+    </div>
+</div>

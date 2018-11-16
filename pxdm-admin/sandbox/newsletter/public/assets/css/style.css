@@ -1,0 +1,18 @@
+body {
+    background: #EEEEEE;
+    /*color: #FFFFFF;*/
+    font-family: Merriweather, sans-serif;
+}
+
+div.input-wrapper {
+    margin-top: 10px;
+}
+.input-wrapper input[type=text],
+.input-wrapper input[type=email] {
+    padding: 6px;
+    width: 190px;
+    -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;
+    border: none;
+    font-size: 12px;
+    font-family: Merriweather;
+}

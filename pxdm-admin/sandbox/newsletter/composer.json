@@ -1,0 +1,16 @@
+{
+  "name": "pricedrummer/newsletter",
+  "description": "PriceDrummer Newsletter",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Akitoye Joseph",
+      "email": "josephakitoye@gmail.com"
+    }
+  ],
+  "require": {
+    "swiftmailer/swiftmailer": "4.1.7",
+    "phpmailer/phpmailer": "v5.2.16"
+  }
+}

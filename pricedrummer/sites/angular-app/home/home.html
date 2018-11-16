@@ -1,0 +1,152 @@
+<!--------------facebook widget-----------------------
+This doesn't work in the index page, so i moved
+it here. Note to anyone who finds this section.
+The code below is for facebook SDK plugin.
+------------------------------------------------------>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=163684300657390";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--------------end facebook widget------------------->
+
+<div class="handle_home_section" class="ng-cloak">
+    <section class="container">
+        <div class="row">
+            <div class="col-md-3 hidden-sm hidden-xs nopadding">
+                <div class="home-category-nav">
+                    <div class="category_area">
+                        <div class="cat_header">
+                            <p class="cat-heading">Compare Prices</p>
+                        </div>
+                        <div class="category_list">
+                            <div ng-repeat="category in mega_categories | orderBy: 'order_index' | unique:'name'" ng-hide="category.name=='Real Estate'">
+                                <div class="cat_header">
+                                    <ul>
+                                        <li>
+                                            <h3> <a href="/category/{{category.category_id}}/{{category.name|spacelessUrl| lowercase}}"><img src="img/category_icons/{{category.name|ReformatID}}.png?v={{randVersion}}" alt="">{{category.name}}</a> </h3>
+                                            <ul>
+                                                <li ng-repeat="level3 in category.category_children| limitTo : 10"> <a class="nav-action" href="/filter/{{level3.category_id}}/{{level3.name|spacelessUrl| lowercase}}">{{level3.name}}</a>, </li>
+                                                <li><a class="nav-action" href="/category/{{category.category_id}}/{{category.name|spacelessUrl| lowercase}}">View More</a> </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="see-all_category"> <a href="/all-categories">see all <i class="fa fa-angle-right" aria-hidden="true"></i><i class="fa fa-angle-right" aria-hidden="true"></i></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 hidden-xs" style="margin-left: 0;">
+                <div class="handle_slider" style="margin-bottom: 15px;">
+                    <div id="home_slides_control">
+                        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                            <div uib-slide ng-repeat="slide in slides" index="$index">
+                                <a href="{{slide.url}}"><img ng-src="{{slide.image}}?v={{randVersion}}" style="margin:auto;width: 750px;height: 326px;"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-widget-wrapper clearfix" style="margin-bottom: 15px;">
+                    <div class="panel-widget">
+                        <div class="panel-widget-heading">
+                            <h2 class="panel-title">Compare prices before you buy</h2> </div>
+                        <div class="panel-widget-body">
+                            <div class="col-md-12 no-padding">
+                                <div ng-repeat="product in home_compare" class="col-md-4 col-lg-4 col-sm-6 no-padding panel-widget-thumbs">
+                                    <h5>{{product.name}}</h5>
+                                    <div class="col-md-4 col-sm-3 no-padding"> <img alt="{{product.name}}image" ng-src="img/60x60/{{product.image}}?v={{randVersion}}" title="{{product.name}}"> </div>
+                                    <div class="col-md-8 col-sm-9 no-padding">
+                                        <ul class="panel-widget-categories">
+                                            <li ng-repeat="sub_product in product.sub_categories"><a href="{{sub_product.url}}">{{sub_product.shortname}}</a>{{$last ? '' : ', '}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 no-padding" style="padding-right: 0;">
+                    <div class="blog-social-area">
+                        <div class="panel panel-default" style="margin-left: 0;">
+                            <div class="panel-body" style="padding:0;">
+                                <div class="blog_area">
+                                    <a href="http://blog.pricedrummer.com/" target="_blank">
+                                        <h3> <button class="btn btn-warning btn-lg">Blog </button> </h3> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 hidden-xs" style="padding-right: 0px;">
+                    <div class="social-media-area">
+                        <div class="panel panel-default">
+                            <div class="panel-body" style="padding:0;">
+                                <div class="fb-page" data-href="{{FACEBOOK_PLUGIN}}" data-tabs="timeline" data-width="358" data-height="211" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{FACEBOOK_PLUGIN}}" class="fb-xfbml-parse-ignore"><a href="{{FACEBOOK_PLUGIN}}">PriceDrummer.com - compare prices in {{COUNTRY}}</a></blockquote></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 nopadding"> </div>
+        </div>
+        <div class="handle_home_category_section">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 hidden-xs no-padding">
+                    <div class="top-category-area">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Top Categories</h3> </div>
+                            <div class="panel-body" style="padding: 0 13px;">
+                                <div class="row">
+                                    <div ng-repeat="topCategory in top_categories" class="col-md-3 col-sm-3 col-xs-6" style="padding: 2px; overflow:hidden;">
+                                        <div onmouseover="showSubCat(this);" onmouseleave="hideSubCat(this)" class="cat_paddin top_Cats" style='background-image: url("img/{{topCategory.image}}");'>
+                                            <a href="">
+                                                <h3>{{topCategory.name}}</h3> </a>
+                                            <div style="" class="CategorySub hide_sub-cat">
+                                                <h3>{{topCategory.name}}</h3>
+                                                <ul class="topcats">
+                                                    <li ng-repeat="sub_topCategory in topCategory.children"><a href="/filter/{{sub_topCategory.id}}/{{sub_topCategory.name|spacelessUrl| lowercase}}" class="top_categories_catzero_link">{{sub_topCategory.shortname}}</a> </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="hidden-lg hidden-sm hidden-md col-xs-12">
+                            <div class="popular category_area">
+                                <div class="category-widget-wrapper">
+                                    <div class="category-widget">
+                                        <div class="category-widget-heading">
+                                            <h2 class="category-title">Compare Prices</h2> </div>
+                                        <div class="category-widget-content">
+                                            <ul> <span ng-repeat="category in mega_categories | orderBy: 'order_index'| unique:'name'" ng-show="category.name !='Real Estate'"><a href="/category/{{category.category_id}}/{{category.name|spacelessUrl|lowercase}}"> <li> <img style="margin-right: 10px;" ng-src="img/category_icons/{{category.name|ReformatID}}.png?v={{randVersion}}" alt="">{{category.name}}<span style="display: inline-block; line-height: 0; margin-top: 10px;" class="fa fa-angle-right pull-right" aria-hidden="true"> </span> </li>
+                                                </a>
+                                                </span>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xs-12"> </div>
+            <div class="hidden-lg hidden-sm hidden-md col-xs-12"> </div>
+            <div class="col-md-2 col-lg-2 col-xs-12"> </div>
+            <div class="hidden-md hidden-sm hidden-lg col-xs-12"> </div>
+            <div class="hidden-md hidden-lg hidden-sm col-xs-12"> </div>
+        </div>
+</div>
+</section>
+</div>

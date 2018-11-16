@@ -1,0 +1,110 @@
+/*
+Theme Name:     Newspaper 7 Child theme
+Theme URI: 		http://themeforest.net/user/tagDiv/portfolio
+Description:    Child theme made by tagDiv
+Author:         tagDiv
+Author URI: 	http://themeforest.net/user/tagDiv/portfolio
+Template:       Newspaper                             
+Version:        7.2c
+*/
+
+
+/*  ----------------------------------------------------------------------------
+    This file will load automatically when the child theme is active. You can use it
+    for custom CSS.
+*/
+
+.td-header-style-11 .td-logo-wrap-full .td-logo {
+	line-height: 100px;
+}
+
+#rev_slider_1_1.rev_slider.fullwidthabanner.revslider-initialised.tp-simpleresponsive {
+	margin-top: 20px !important;
+}
+
+.footer-wrapper {
+	background: #fff;
+	border-top: 4px solid #104E84;
+	overflow: hidden;
+	margin-top: 20px;
+}
+
+.footer-wrapper .col {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.footer-wrapper .flags-wrapper {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.footer-wrapper .col p {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 16px;
+	font-family: 'Roboto Slab';
+}
+
+.footer-wrapper .col ul.flags {
+	margin: 0 auto 35px;
+	padding: 0;
+	width: 40%;
+}
+
+.footer-wrapper .col ul.flags li {
+	list-style: none;
+	float: left;
+}
+
+.footer-wrapper .col ul.flags li a img {
+	cursor: pointer;
+}
+
+
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after {
+	content: " "; /* 1 */
+	display: table; /* 2 */
+}
+
+.cf:after {
+	clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+	*zoom: 1;
+}
+
+
+/* === Mobile Screen === */
+@media (max-width: 767px) {
+	.footer-wrapper .col {
+		width: 100%;
+	}
+
+	.footer-wrapper .col p {
+		text-align: center;
+		margin-top: 10px;
+		font-size: 14px;
+	}
+
+	.footer-wrapper .col ul.flags {
+		margin: 0 auto 30px;
+		padding: 0;
+		width: 90%;
+	}
+}

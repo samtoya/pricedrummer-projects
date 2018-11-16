@@ -1,0 +1,25 @@
+<div class="container" style="margin-top: 20px;">
+<div class="row">
+
+    <div  ng-controller="IndexCtrl" >
+        <div ng-repeat="category in mega_categories | orderBy:'-category_children'" ng-hide="category.name == 'Pet & Pet Supplies' || category.name == 'Real Estate'">
+            <div class="col-md-2 col-sm-3">
+                <div class="al_navContent cat-top">
+                    <h3><a style="color: #000;"
+                           href="/category/{{category.category_id}}/{{category.name|spacelessUrl| lowercase}}">{{category.name}}</a>
+                    </h3>
+                    <div class="nav-template nav-flyout-content nav-tpl-megamenu">
+                        <a ng-repeat="level3 in category.category_children" style="color: #000 !important;"
+                           href="/filter/{{level3.category_id}}/{{level3.name |spacelessUrl| lowercase}}"
+                           class="nav-item">
+                            <i class="fa fa-folder-open"></i><span class="nav-text">{{level3.name}}</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>

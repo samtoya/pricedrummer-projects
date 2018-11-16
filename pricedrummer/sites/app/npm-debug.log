@@ -1,0 +1,80 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/nodejs',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'install',
+1 verbose cli   'bootstrap-offcanvas',
+1 verbose cli   '--save' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.6
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData install
+8 silly fetchPackageMetaData bootstrap-offcanvas
+9 silly fetchNamedPackageData install
+10 silly mapToRegistry name install
+11 silly mapToRegistry using default registry
+12 silly mapToRegistry registry https://registry.npmjs.org/
+13 silly mapToRegistry uri https://registry.npmjs.org/install
+14 silly fetchNamedPackageData bootstrap-offcanvas
+15 silly mapToRegistry name bootstrap-offcanvas
+16 silly mapToRegistry using default registry
+17 silly mapToRegistry registry https://registry.npmjs.org/
+18 silly mapToRegistry uri https://registry.npmjs.org/bootstrap-offcanvas
+19 verbose request uri https://registry.npmjs.org/install
+20 verbose request no auth needed
+21 info attempt registry request try #1 at 10:31:37 AM
+22 verbose request id 49ea99d2b28a899a
+23 http request GET https://registry.npmjs.org/install
+24 verbose request uri https://registry.npmjs.org/bootstrap-offcanvas
+25 verbose request no auth needed
+26 info attempt registry request try #1 at 10:31:37 AM
+27 http request GET https://registry.npmjs.org/bootstrap-offcanvas
+28 info retry will retry, error on last attempt: Error: unable to get local issuer certificate
+29 info retry will retry, error on last attempt: Error: unable to get local issuer certificate
+30 info attempt registry request try #2 at 10:31:47 AM
+31 http request GET https://registry.npmjs.org/install
+32 info attempt registry request try #2 at 10:31:47 AM
+33 http request GET https://registry.npmjs.org/bootstrap-offcanvas
+34 info retry will retry, error on last attempt: Error: unable to get local issuer certificate
+35 info retry will retry, error on last attempt: Error: unable to get local issuer certificate
+36 info attempt registry request try #3 at 10:32:47 AM
+37 http request GET https://registry.npmjs.org/install
+38 info attempt registry request try #3 at 10:32:47 AM
+39 http request GET https://registry.npmjs.org/bootstrap-offcanvas
+40 silly fetchPackageMetaData Error: unable to get local issuer certificate
+40 silly fetchPackageMetaData     at Error (native)
+40 silly fetchPackageMetaData     at TLSSocket.<anonymous> (_tls_wrap.js:1016:38)
+40 silly fetchPackageMetaData     at emitNone (events.js:67:13)
+40 silly fetchPackageMetaData     at TLSSocket.emit (events.js:166:7)
+40 silly fetchPackageMetaData     at TLSSocket._finishInit (_tls_wrap.js:585:8)
+40 silly fetchPackageMetaData  error for install { [Error: unable to get local issuer certificate] code: 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' }
+41 silly fetchPackageMetaData Error: unable to get local issuer certificate
+41 silly fetchPackageMetaData     at Error (native)
+41 silly fetchPackageMetaData     at TLSSocket.<anonymous> (_tls_wrap.js:1016:38)
+41 silly fetchPackageMetaData     at emitNone (events.js:67:13)
+41 silly fetchPackageMetaData     at TLSSocket.emit (events.js:166:7)
+41 silly fetchPackageMetaData     at TLSSocket._finishInit (_tls_wrap.js:585:8)
+41 silly fetchPackageMetaData  error for bootstrap-offcanvas { [Error: unable to get local issuer certificate] code: 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY' }
+42 silly rollbackFailedOptional Starting
+43 silly rollbackFailedOptional Finishing
+44 silly runTopLevelLifecycles Starting
+45 silly runTopLevelLifecycles Finishing
+46 silly install printInstalled
+47 verbose stack Error: unable to get local issuer certificate
+47 verbose stack     at Error (native)
+47 verbose stack     at TLSSocket.<anonymous> (_tls_wrap.js:1016:38)
+47 verbose stack     at emitNone (events.js:67:13)
+47 verbose stack     at TLSSocket.emit (events.js:166:7)
+47 verbose stack     at TLSSocket._finishInit (_tls_wrap.js:585:8)
+48 verbose cwd /var/www/pricedrummer/sites/app
+49 error Linux 4.4.0-38-generic
+50 error argv "/usr/bin/nodejs" "/usr/bin/npm" "install" "install" "bootstrap-offcanvas" "--save"
+51 error node v4.2.6
+52 error npm  v3.5.2
+53 error code UNABLE_TO_GET_ISSUER_CERT_LOCALLY
+54 error unable to get local issuer certificate
+55 error If you need help, you may report this error at:
+55 error     <https://github.com/npm/npm/issues>
+56 verbose exit [ 1, true ]

@@ -1,0 +1,1 @@
+jssor_1_slider_init=function(){var jssor_1_options={$AutoPlay:!0,$ArrowNavigatorOptions:{$Class:$JssorArrowNavigator$},$ThumbnailNavigatorOptions:{$Class:$JssorThumbnailNavigator$,$Cols:4,$SpacingX:4,$SpacingY:4,$Orientation:2,$Align:0}};var jssor_1_slider=new $JssorSlider$("jssor_1",jssor_1_options)}

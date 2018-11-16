@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions targetNamespace="http://ws.etraveli.com/wsr/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+    <types>
+        <xs:schema>
+            <xs:import namespace="http://ws.etraveli.com/wsr/ping/v1_0/" schemaLocation="http://ws.etraveli.com/wsr/ping/v1_0/"/>
+            <xs:import namespace="http://ws.etraveli.com/wsr/ultrasearch/v1_0/" schemaLocation="http://ws.etraveli.com/wsr/ultrasearch/v1_0/"/>
+        </xs:schema>
+    </types>
+    <message name="Ping10Request">
+        <part name="body" element="ws:Request" xmlns:ws="http://ws.etraveli.com/wsr/ping/v1_0/"/>
+    </message>
+    <message name="Ping10Response">
+        <part name="body" element="ws:Response" xmlns:ws="http://ws.etraveli.com/wsr/ping/v1_0/"/>
+    </message>
+    <message name="UltraSearch10Request">
+        <part name="body" element="ws:Request" xmlns:ws="http://ws.etraveli.com/wsr/ultrasearch/v1_0/"/>
+    </message>
+    <message name="UltraSearch10Response">
+        <part name="body" element="ws:Response" xmlns:ws="http://ws.etraveli.com/wsr/ultrasearch/v1_0/"/>
+    </message>
+    <portType name="Ping10PortType">
+        <operation name="Ping10">
+            <input message="tns:Ping10Request" xmlns:tns="http://ws.etraveli.com/wsr/wsdl/"/>
+            <output message="tns:Ping10Response" xmlns:tns="http://ws.etraveli.com/wsr/wsdl/"/>
+        </operation>
+    </portType>
+    <portType name="UltraSearch10PortType">
+        <operation name="UltraSearch10">
+            <input message="tns:UltraSearch10Request" xmlns:tns="http://ws.etraveli.com/wsr/wsdl/"/>
+            <output message="tns:UltraSearch10Response" xmlns:tns="http://ws.etraveli.com/wsr/wsdl/"/>
+        </operation>
+    </portType>
+    <binding name="Ping10SoapBinding" type="tns:Ping10PortType" xmlns:tns="http://ws.etraveli.com/wsr/wsdl/">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="Ping10">
+            <soap:operation soapAction="" style="document"/>
+            <input>
+                <soap:body parts="body" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="body" use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <binding name="UltraSearch10SoapBinding" type="tns:UltraSearch10PortType" xmlns:tns="http://ws.etraveli.com/wsr/wsdl/">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="UltraSearch10">
+            <soap:operation soapAction="" style="document"/>
+            <input>
+                <soap:body parts="body" use="literal"/>
+            </input>
+            <output>
+                <soap:body parts="body" use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="Ping10Service">
+        <port name="Ping10PortType" binding="tns:Ping10SoapBinding" xmlns:tns="http://ws.etraveli.com/wsr/wsdl/">
+            <soap:address location="http://ws.za.gotogate.com/ws/ping/v1_0/pricedrummer"/>
+        </port>
+    </service>
+    <service name="UltraSearch10Service">
+        <port name="UltraSearch10PortType" binding="tns:UltraSearch10SoapBinding" xmlns:tns="http://ws.etraveli.com/wsr/wsdl/">
+            <soap:address location="http://ws.za.gotogate.com/ws/ultrasearch/v1_0/pricedrummer"/>
+        </port>
+    </service>
+</definitions>

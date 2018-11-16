@@ -1,0 +1,14 @@
+{
+    "name": "pxdm/images",
+    "description": "A script that compresses images and resizes them into medium, thumbnails and large formats",
+    "authors": [
+        {
+            "name": "samtoya",
+            "email": "devcujo3@gmail.com"
+        }
+    ],
+    "require": {
+      "tinify/tinify": "*",
+        "francodacosta/phmagick": "^5.0"
+    }
+}

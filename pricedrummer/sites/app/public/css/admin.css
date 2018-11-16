@@ -1,0 +1,3 @@
+table#invoices_list.dataTable thead td::after {
+    content: '';
+}

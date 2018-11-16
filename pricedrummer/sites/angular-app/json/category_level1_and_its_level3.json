@@ -1,0 +1,278 @@
+[
+{
+	"category_id":"1",
+	"category_name" : "Electronics & Computers",
+	"category_image" : "site_logo/icons/computer_grey.png",
+	"category_children":[
+		{
+			"category_id":"4",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"6",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"6",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"6",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"6",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"6",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"6",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"6",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"6",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"7",
+			"category_name" : "Level 3 category"
+		}
+	]
+},
+{
+	"category_id":"1",
+	"category_name" : "Home & Garden",
+	"category_image" : "site_logo/icons/computer_grey.png",
+	"category_children":[
+		{
+			"category_id":"7",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"8",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"9",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"10",
+			"category_name" : "Level 3 category"
+		}
+	]
+},
+{
+	"category_id":"3",
+	"category_name" : "Cloths, Shoes & Jewellery",
+	"category_image" : "site_logo/icons/computer_grey.png",
+	"category_children":[
+		{
+			"category_id":"11",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"14",
+			"category_name" : "Level 3 category"
+		}
+	]
+},
+{
+	"category_id":"3",
+	"category_name" : "Cloths, Shoes & Jewellery",
+	"category_image" : "site_logo/icons/computer_grey.png",
+	"category_children":[
+		{
+			"category_id":"11",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"14",
+			"category_name" : "Level 3 category"
+		}
+	]
+},
+{
+	"category_id":"3",
+	"category_name" : "Cloths, Shoes & Jewellery",
+	"category_image" : "site_logo/icons/computer_grey.png",
+	"category_children":[
+		{
+			"category_id":"11",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"14",
+			"category_name" : "Level 3 category"
+		}
+	]
+},
+{
+	"category_id":"3",
+	"category_name" : "Cloths, Shoes & Jewellery",
+	"category_image" : "site_logo/icons/computer_grey.png",
+	"category_children":[
+		{
+			"category_id":"11",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"14",
+			"category_name" : "Level 3 category"
+		}
+	]
+},
+{
+	"category_id":"3",
+	"category_name" : "Cloths, Shoes & Jewellery",
+	"category_image" : "site_logo/icons/computer_grey.png",
+	"category_children":[
+		{
+			"category_id":"11",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"14",
+			"category_name" : "Level 3 category"
+		}
+	]
+},
+{
+	"category_id":"3",
+	"category_name" : "Cloths, Shoes & Jewellery",
+	"category_image" : "site_logo/icons/computer_grey.png",
+	"category_children":[
+		{
+			"category_id":"11",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"13",
+			"category_name" : "Level 3 category"
+		},
+		{
+			"category_id":"14",
+			"category_name" : "Level 3 category"
+		}
+	]
+}
+]

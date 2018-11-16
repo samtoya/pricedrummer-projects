@@ -1,0 +1,25 @@
+# Organization: PriceDrummer
+# Website: www.pricedrummer.com.gh
+# Filename: robots.txt
+# Date created: 22/11/16
+# Last Modified: 22/11/16
+
+User-agent: *
+
+# Categories
+Disallow: /category
+Disallow: /filter
+Disallow: /compare
+Disallow: /catsub
+
+# User Auth
+Disallow: /login
+Disallow: /register
+Disallow: /reset
+
+# API
+Disallow: /api
+Disallow: /*.php
+
+# Sitemap
+Sitemap: https://www.pricedrummer.com/sitemap/sitemap.xml

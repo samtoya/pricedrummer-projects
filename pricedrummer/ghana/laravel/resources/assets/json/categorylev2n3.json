@@ -1,0 +1,271 @@
+[
+	{
+		"category_id":"4",
+		"category_l2_name" : "Level 2 category",
+		"category_Image" : "img/Samsung-UE43J5500.jpg",
+		"lev3s" : [
+			
+			{
+				"category_id":"4",
+				"category_name":"Level 3 category can also be very long"
+			},
+			{
+				"category_id":"6",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"7",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"8",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"9",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			}
+		]
+	},
+	{
+		"category_id":"11",
+		"category_l2_name" : "Level 2 category",
+		"category_Image" : "img/Levi-s.jpg",
+		"lev3s" : [
+			
+			{
+				"category_id":"5",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"6",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"7",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"8",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"9",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			}
+		]
+	},
+	{
+		"category_id":"12",
+		"category_l2_name" : "Level 2 category",
+		"category_Image" : "img/Microsoft-Lumia-535.jpg",
+		"lev3s" : [
+			
+			{
+				"category_id":"5",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"6",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"7",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"8",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"9",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			}
+		]
+	},
+	{
+		"category_id":"13",
+		"category_l2_name" : "Level 2 category",
+		"category_Image" : "img/M-C.jpg",
+		"lev3s" : [
+			
+			{
+				"category_id":"5",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"6",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"7",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"8",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"9",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			}
+		]
+	},
+	{
+		"category_id":"14",
+		"category_l2_name" : "Level 2 category",
+		"category_Image" : "img/consumer_electronics.jpg",
+		"lev3s" : [
+			
+			{
+				"category_id":"5",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"6",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"7",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"8",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"9",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			}
+		]
+	},
+	{
+		"category_id":"14",
+		"category_l2_name" : "Level 2 category",
+		"category_Image" : "img/Samsung-UE43J5500.jpg",
+		"lev3s" : [
+			
+			{
+				"category_id":"5",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"6",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"7",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"8",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"9",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			}
+		]
+	},
+	{
+		"category_id":"14",
+		"category_l2_name" : "Level 2 category",
+		"category_Image" : "img/Samsung-UE43J5500.jpg",
+		"lev3s" : [
+			
+			{
+				"category_id":"5",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"6",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"7",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"8",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"9",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			}
+		]
+	},
+	{
+		"category_id":"14",
+		"category_l2_name" : "Level 2 category",
+		"category_Image" : "img/beauty.jpg",
+		"lev3s" : [
+			
+			{
+				"category_id":"5",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"6",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"7",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"8",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"9",
+				"category_name":"Level 3 category"
+			},
+			{
+				"category_id":"10",
+				"category_name":"Level 3 category"
+			}
+		]
+	}
+	
+]

@@ -1,0 +1,113 @@
+/* === Navigation === */
+body {
+  padding-top: 70px;
+}
+body nav .container .navbar-header .navbar-brand .logo {
+  margin-top: -15px;
+  height: 50px;
+  width: 200px;
+}
+body .content {
+  margin-top: 70px;
+}
+body .content figure.map img.africa {
+  width: 400px;
+}
+body .content figure.map figcaption {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-family: "Montserrat", sans-serif;
+}
+body .content h4 {
+  font-size: 16px;
+  margin-left: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+body .content ul {
+  margin: 0;
+  padding: 0;
+}
+body .content ul li {
+  list-style: none;
+  float: left;
+  height: 160px;
+}
+body .content ul li a {
+  display: block;
+  padding: 40px 20px 0 5px;
+  text-align: center;
+}
+body .content ul li a:hover {
+  text-decoration: none;
+}
+body .content ul li a figure {
+  width: 110px;
+}
+body .content ul li a figure img.country {
+  width: 100px;
+}
+body .content ul li a figure figcaption {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-top: 10px;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* === Navigation === */
+nav .container .navbar-header {
+  width: 100%;
+}
+nav .container .navbar-header .navbar-brand .logo {
+  margin: -15px auto 0 65px;
+}
+
+/* === Main Content === */
+.mobile-content h4 {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.mobile-content .main-map {
+  width: 100%;
+}
+.mobile-content .main-map figure .africa {
+  width: 140px;
+  display: block;
+  margin: 0 auto;
+}
+.mobile-content .main-map figure figcaption {
+  text-align: center;
+  margin-top: 25px;
+}
+.mobile-content .countries {
+  width: 90%;
+  margin: 30px auto 0;
+  padding-bottom: 70px;
+}
+.mobile-content .countries .single-country {
+  margin-top: 10px;
+}
+.mobile-content .countries .single-country a figure {
+  height: 120px;
+}
+.mobile-content .countries .single-country a figure img {
+  width: 110px;
+  display: block;
+  margin: 0 auto;
+}
+.mobile-content .countries .single-country a figure figcaption {
+  text-align: center;
+  font-size: 12px;
+  color: #000;
+}

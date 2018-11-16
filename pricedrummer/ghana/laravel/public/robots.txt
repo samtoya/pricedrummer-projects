@@ -1,0 +1,16 @@
+# Organization: PriceDrummer
+# Website: www.pricedrummer.com
+# Filename: robots.txt
+# Date created: 20/04/17
+# Last Modified: 20/04/17
+# Version 2.0
+
+User-agent: *
+
+# User Auth
+Disallow: /login
+Disallow: /register
+Disallow: /reset
+
+# Sitemap
+# Sitemap: /sitemap.xml
